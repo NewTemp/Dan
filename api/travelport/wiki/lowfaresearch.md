@@ -34,5 +34,5 @@
 
 **China Airlines \(CI\)：**中国航空公司
 
-**Alitalia \(AZ\)：**意大利航空公司 
+**Alitalia \(AZ\)：**意大利航空公司   
 
