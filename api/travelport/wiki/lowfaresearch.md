@@ -20,9 +20,9 @@
 
 ## Carriers\(航空公司\)
 
-**&lt;PermittedCarriers&gt;：**返回特定航空公司的结果 
+**&lt;PermittedCarriers&gt;：**指定航空公司查询，返回特定航空公司的结果
 
-**&lt;PreferredCarriers&gt;：**不仅返回特定航空公司的结果，也有可能会根据最佳价格返回其他航空公司的结果
+**&lt;PreferredCarriers&gt;：**优先航空公司查询，不仅返回特定航空公司的结果，也有可能会根据最佳价格返回其他航空公司的结果
 
 **EK（Emirates）：**阿联酋航空
 
@@ -33,6 +33,4 @@
 **China Airlines \(CI\)：**中国航空公司
 
 **Alitalia \(AZ\)：**意大利航空公司
-
-
 
