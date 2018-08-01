@@ -8,5 +8,42 @@ Universal API創建并從多個提供商和供應商處獲取預定數據。當�
 
 PNR也稱為預定文件，是來自特定供應商的唯一標識符，用作特定旅行的記錄。PNR包括一個PNR的記錄定位符，旅行供應商的信息，特定段的旅行者信息，以及選定或保留的行程信息。
 
+在Universal API中，PNR有一些特別的請求不一定能在相同的提供商和供應商的預定文件中找到。對於Universal API,每個PNR可以包含以下類型的旅行段的任意組合：
+
+* 一個或多個air segments.
+
+* 一個或多個rail segments.
+
+* 一個或多個hotel segments.
+
+* 一個或多個vehicle segments.
+
+* 一個或多個passive segments.
+
+在一個Universal API請求中不能預定多個hotel segments或者vehicle segments。如果需要多個hotel segments或者vehicle segments，客戶可以選擇：
+
+* 把這個segment加入現有的UR和PNR中。
+* 創建一個新的PNR並且把它加到一個現有的UR中。
+
+## Universal Records \(UR\)
+
+Universal API服務提供對來自多個數據源（提供商）的數據訪問。Universal API生成一個名為Universal Record Locator（UR）的預定文件記錄\(UniversalRecordLocatorCode\)。
+
+UR識別旅行者的整個預定文件，包括一般旅行者信息和旅遊供應商信息，以及通過Universal API提供的航空，汽車，酒店，鐵路或者其他旅行段的任何PNR數據。這個預定記錄是特定於Universal API的，並且可以包含來自一個或多個提供預定數據的供應商的PNR。
+
+個別旅行段還可能包含來自供應商的額外記錄定位符和供應商（航空，汽車和酒店供應商）的確認碼。
+
+## Example of aUniversal Recordwith Multiple PNRs
+
+一個UR可以包含簡單的數據，比如一個PNR，一個旅行段到多個多個PNR，其中包含旅行段和非旅行段信息的數據。
+
+下面的例子展示了如何在Universal API中管理UR和相關的PNR。這個例子展示了一個可能的端到端流程，用於在旅途中創建和添加數據，在大多數情況下，有多種方法可以添加或修改UR和PNR數據。
+
+### _Transaction 1_
+
+
+
+
+
 
 
