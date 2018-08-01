@@ -1,22 +1,22 @@
-## @SpringBootApplication
+### @SpringBootApplication
 
 申明让Spring boot 自动给程序进行必要的配置，这个配置等于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan
 
 ---
 
-## @Controller
+### @Controller
 
 用于定义控制类，在Spring项目中将用户发来的url请求转发到对应的服务器接口（Service层）
 
 ---
 
-## @RestController
+### @RestController
 
 用于标注控制层组件，等同于@ResponseBody+@Controller
 
 ---
 
-## @RequestMapping
+### @RequestMapping
 
 提供路由信息，负责映射url到具体函数，其组合注解如下：
 
@@ -30,13 +30,13 @@
 
 ---
 
-## @Autowired
+### @Autowired
 
 自动导入依赖的bean
 
 ---
 
-## @Value
+### @Value
 
 注入application中配置的属性值
 
