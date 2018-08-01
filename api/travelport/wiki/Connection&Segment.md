@@ -58,3 +58,9 @@ SegmentIndex顯示了連接指示符必須存在的航段。SegmentIndex的值�
 
 ![](/assets/4.png)
 
+
+
+### NODE：Air Availability響應中的連接指示符用於Air Pricing和Air Booking，因為它來自Low Fare Shopping的響應。
+
+
+
