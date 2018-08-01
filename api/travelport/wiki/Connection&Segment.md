@@ -50,5 +50,11 @@ SegmentIndex顯示了連接指示符必須存在的航段。SegmentIndex的值�
 
 ![](/assets/3.png)
 
+* ##### Low Fare Shopping或Air Availability響應中的Connection / SegmentIndex必須在Air Booking請求中的響應Air Segments中發送。
 
+下面這個例子中，請注意要根據Low Fare Shopping響應中的SegmentIndex加1來防止連接指示符。
+
+請記住，在Low Fare Shopping的響應示例中，SegmentIndex的指標為0,1,3,4，這意味著在Air Pricing的請求中，AirSegment的1,2,4,5需要連接指示符。
+
+![](/assets/4.png)
 
