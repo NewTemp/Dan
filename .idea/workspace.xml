@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/api/travelport/wiki/ActionStatus.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/travelport/wiki/FormOfPayment.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,12 +14,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="SUMMARY.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SUMMARY.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SUMMARY.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
+              <first_editor relative-caret-position="266">
+                <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form-of-payment.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/travelport/wiki/form-of-payment.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
               <first_editor>
-                <caret selection-end-line="1" />
+                <caret column="2" selection-start-column="2" selection-end-column="17" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="action-status.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/travelport/wiki/action-status.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor>
+                <caret column="2" selection-start-column="2" selection-end-column="15" />
               </first_editor>
               <second_editor />
             </state>
@@ -47,12 +70,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connection&amp;Segment.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Connection&amp;Segment.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/travelport/wiki/Connection&amp;Segment.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="433">
-                <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+              <first_editor>
+                <caret column="2" selection-start-column="2" selection-end-column="26" />
               </first_editor>
               <second_editor />
             </state>
@@ -64,6 +87,13 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SUMMARY.md" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -201,7 +231,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533095785437</updated>
-      <workItem from="1533095787611" duration="2000000" />
+      <workItem from="1533095787611" duration="2304000" />
     </task>
     <task id="LOCAL-00001" summary="add WK">
       <created>1533095881281</created>
@@ -210,11 +240,32 @@
       <option name="project" value="LOCAL" />
       <updated>1533095881281</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add WK">
+      <created>1533112202077</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1533112202077</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add WK">
+      <created>1533112227664</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1533112227664</updated>
+    </task>
+    <task id="LOCAL-00004" summary="task#125&amp;129 [utech-kb] [DEV] desc: ADD Connection &amp; Segment WK,ActionStatus WIKI &amp; FormOfPayment WK">
+      <created>1533112492883</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1533112492883</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2000000" />
+    <option name="totallyTimeSpent" value="2304000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -257,36 +308,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add WK" />
-    <option name="LAST_COMMIT_MESSAGE" value="add WK" />
+    <MESSAGE value="task#125&amp;129 [utech-kb] [DEV] desc: ADD Connection &amp; Segment WK,ActionStatus WIKI &amp; FormOfPayment WK" />
+    <option name="LAST_COMMIT_MESSAGE" value="task#125&amp;129 [utech-kb] [DEV] desc: ADD Connection &amp; Segment WK,ActionStatus WIKI &amp; FormOfPayment WK" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/SUMMARY.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret selection-end-line="1" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gitbook使用文档.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/action-status.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/form-of-payment.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
@@ -302,11 +328,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/action-status.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="2" selection-start-column="2" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/travelport/wiki/Connection&amp;Segment.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="433">
-            <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          <first_editor>
+            <caret column="2" selection-start-column="2" selection-end-column="26" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/form-of-payment.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret column="2" selection-start-column="2" selection-end-column="17" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SUMMARY.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="266">
+            <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           </first_editor>
           <second_editor />
         </state>
