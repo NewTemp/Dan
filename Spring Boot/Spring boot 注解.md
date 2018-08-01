@@ -325,113 +325,105 @@ spring:
 
 定义转换对象：
 
-\`\`\`
-
-
-
 ```
 @Component
 @ConfigurationProperties(prefix="spring.redis")
 public class RedisProps {
         private int dbIndex;
-        
+
         @NotNull
-        
+
         private String hostname;
-        
+
         private String password;
-        
+
         @NotNull
-        
+
         private int port;
-        
+
         private long timeout;
-        
+
         private List&lt;Map&lt;String,String&gt;&gt; poolConfig;
-        
-        
-        
+
+
+
         public int getDbIndex\(\) {
-        
+
             return dbIndex;
-        
+
         }
-        
+
         public void setDbIndex\(int dbIndex\) {
-        
+
             this.dbIndex = dbIndex;
-        
+
         }
-        
+
         public String getHostname\(\) {
-        
+
             return hostname;
-        
+
         }
-        
+
         public void setHostname\(String hostname\) {
-        
+
             this.hostname = hostname;
-        
+
         }
-        
+
         public String getPassword\(\) {
-        
+
             return password;
-        
+
         }
-        
+
         public void setPassword\(String password\) {
-        
+
             this.password = password;
-        
+
         }
-        
+
         public int getPort\(\) {
-        
+
             return port;
-        
+
         }
-        
+
         public void setPort\(int port\) {
-        
+
             this.port = port;
-        
+
         }
-        
+
         public long getTimeout\(\) {
-        
+
             return timeout;
-        
+
         }
-        
+
         public void setTimeout\(long timeout\) {
-        
+
             this.timeout = timeout;
-        
+
         }
-        
+
         public List&lt;Map&lt;String, String&gt;&gt; getPoolConfig\(\) {
-        
+
             return poolConfig;
-        
+
         }
-        
+
         public void setPoolConfig\(List&lt;Map&lt;String, String&gt;&gt; poolConfig\) {
-        
+
             this.poolConfig = poolConfig;
-        
+
         }
 }
 ```
 
+---
 
-
-\`\`\`
-
-\*\*\*
-
-\#\# @Transactional
+## @Transactional
 
 数据库的事物管理，若是同时插入两条信息，失败则会同时回滚（查询的时候不用加）
 
