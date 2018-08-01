@@ -6,7 +6,7 @@
 
 * **ACTIVE**
 
-    在即使購買的情況下，將ACH\(_Airline Content Hub_\)請求設置為“ACTIVE”。
+       在即使購買的情況下，將ACH\(_Airline Content Hub_\)請求設置為“ACTIVE”。
 
 * **TAW**
 
