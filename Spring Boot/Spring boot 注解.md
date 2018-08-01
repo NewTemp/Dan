@@ -46,19 +46,19 @@
 
 ---
 
-## @Bean
+### @Bean
 
 用@Bean标注方法等价于XML中配置的bean。
 
 ---
 
-## @Component
+### @Component
 
 泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
 
 ---
 
-## @PathVariable
+### @PathVariable
 
 获取url中的数据
 
@@ -72,7 +72,7 @@
 
 ---
 
-## @RequestParam
+### @RequestParam
 
 获取请求中传过来的值
 
@@ -80,7 +80,7 @@
 
 ---
 
-## @ConfigurationProperties
+### @ConfigurationProperties
 
 将配置文件转成对象，yml配置：
 
@@ -211,7 +211,7 @@
 
 ---
 
-## @Transactional
+### @Transactional
 
 数据库的事物管理，若是同时插入两条信息，失败则会同时回滚（查询的时候不用加）\#\# @SpringBootApplication
 
@@ -219,19 +219,19 @@
 
 ---
 
-## @Controller
+### @Controller
 
 用于定义控制类，在Spring项目中将用户发来的url请求转发到对应的服务器接口（Service层）
 
 ---
 
-## @RestController
+### @RestController
 
 用于标注控制层组件，等同于@ResponseBody+@Controller
 
 ---
 
-## @RequestMapping
+### @RequestMapping
 
 提供路由信息，负责映射url到具体函数，其组合注解如下：
 
@@ -245,13 +245,13 @@
 
 ---
 
-## @Autowired
+### @Autowired
 
 自动导入依赖的bean
 
 ---
 
-## @Value
+### @Value
 
 注入application中配置的属性值
 
@@ -261,19 +261,19 @@
 
 ---
 
-## @Bean
+### @Bean
 
 用@Bean标注方法等价于XML中配置的bean。
 
 ---
 
-## @Component
+### @Component
 
 泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
 
 ---
 
-## @PathVariable
+### @PathVariable
 
 获取url中的数据
 
@@ -287,7 +287,7 @@
 
 ---
 
-## @RequestParam
+### @RequestParam
 
 获取请求中传过来的值
 
@@ -295,7 +295,7 @@
 
 ---
 
-## @ConfigurationProperties
+### @ConfigurationProperties
 
 将配置文件转成对象，yml配置：
 
@@ -423,7 +423,7 @@ public class RedisProps {
 
 ---
 
-## @Transactional
+### @Transactional
 
 数据库的事物管理，若是同时插入两条信息，失败则会同时回滚（查询的时候不用加）
 
