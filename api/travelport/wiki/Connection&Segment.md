@@ -6,11 +6,9 @@
 
 連接邏輯適用於Air Pricing和Air Booking。連接段索引信息返回到Low Fare Shopping/Air Availability響應作為一組數據。
 
-            &lt;air:Connection SegmentIndex="0" /&gt;
+&lt;&lt;&lt;&lt;air:Connection SegmentIndex="0" 
 
-          &lt;air:Connection SegmentIndex="1" /&gt;
+air:Connection SegmentIndex="1" /&gt;air:Connection SegmentIndex="3" /&gt;air:Connection SegmentIndex="4" /&gt;
 
-       &lt;air:Connection SegmentIndex="3" /&gt;
 
-          &lt;air:Connection SegmentIndex="4" /&gt;
 
