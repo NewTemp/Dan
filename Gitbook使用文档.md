@@ -6,7 +6,6 @@
 4. 使用Gitbook Editor打开git项目（不用登陆）
 5. 打开后找到对应的文档编辑，支持markdown语法
 6. 编辑完后点击保存，然后提交![](/assets/import.png)
-7. test submit
 
 
 
