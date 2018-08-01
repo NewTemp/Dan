@@ -1,6 +1,6 @@
 ## @SpringBootApplication
 
-申明让Spring boot 自动给程序进行必要的配置，这个配置等于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan 
+申明让Spring boot 自动给程序进行必要的配置，这个配置等于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan
 
 ---
 
@@ -40,9 +40,9 @@
 
 注入application中配置的属性值
 
-`@Value(value = “#{message}”) `
+`@Value(value = “#{message}”)`
 
-`private String message;`
+`private String message;`
 
 ---
 
@@ -62,13 +62,13 @@
 
 获取url中的数据
 
-`RequestMapping(“user/get/mac/{macAddress}”) `
+`RequestMapping(“user/get/mac/{macAddress}”)`
 
-`public String getByMacAddress(@PathVariable String macAddress){ `
+`public String getByMacAddress(@PathVariable String macAddress){`
 
-`//do something; `
+`//do something;`
 
-`} `
+`}`
 
 ---
 
@@ -76,7 +76,7 @@
 
 获取请求中传过来的值
 
-`@RequestParam(Value = "id", required = false, defaultValue =0)`
+`@RequestParam(Value = "id", required = false, defaultValue =0)`
 
 ---
 
@@ -84,259 +84,244 @@
 
 将配置文件转成对象，yml配置：
 
-`spring: `
+`spring:`
 
-`  redis: `
+`redis:`
 
-`    dbIndex: 0`
+`dbIndex: 0`
 
-`    hostName: 192.168.58.133`
+`hostName: 192.168.58.133`
 
-`    password: nmamtf`
+`password: nmamtf`
 
-`    port: 6379`
+`port: 6379`
 
-`    timeout: 0`
+`timeout: 0`
 
-`    poolConfig: `
+`poolConfig:`
 
-`      - maxIdle: 8`
+`- maxIdle: 8`
 
-`      - minIdle: 0`
+`- minIdle: 0`
 
-`      - maxActive: 8`
+`- maxActive: 8`
 
-`      - maxWait: -1`
+`- maxWait: -1`
 
 定义转换对象：
 
-`@Component`
+`@Component`
 
-`@ConfigurationProperties(prefix="spring.redis")  `
+`@ConfigurationProperties(prefix="spring.redis")`
 
-`public class RedisProps {`
+`public class RedisProps {`
 
-`	private int dbIndex;`
+`private int dbIndex;`
 
-`	@NotNull`
+`@NotNull`
 
-`	private String hostname;`
+`private String hostname;`
 
-`	private String password;`
+`private String password;`
 
-`	@NotNull`
+`@NotNull`
 
-`	private int port;`
+`private int port;`
 
-`	private long timeout;`
+`private long timeout;`
 
-`	private List<Map<String,String>> poolConfig;`
+`private List<Map<String,String>> poolConfig;`
 
-`	`
+`  
+`
 
-`	public int getDbIndex() {`
+`public int getDbIndex() {`
 
-`		return dbIndex;`
+`return dbIndex;`
 
-`	}`
+`}`
 
-`	public void setDbIndex(int dbIndex) {`
+`public void setDbIndex(int dbIndex) {`
 
-`		this.dbIndex = dbIndex;`
+`this.dbIndex = dbIndex;`
 
-`	}`
+`}`
 
-`	public String getHostname() {`
+`public String getHostname() {`
 
-`		return hostname;`
+`return hostname;`
 
-`	}`
+`}`
 
-`	public void setHostname(String hostname) {`
+`public void setHostname(String hostname) {`
 
-`		this.hostname = hostname;`
+`this.hostname = hostname;`
 
-`	}`
+`}`
 
-`	public String getPassword() {`
+`public String getPassword() {`
 
-`		return password;`
+`return password;`
 
-`	}`
+`}`
 
-`	public void setPassword(String password) {`
+`public void setPassword(String password) {`
 
-`		this.password = password;`
+`this.password = password;`
 
-`	}`
+`}`
 
-`	public int getPort() {`
+`public int getPort() {`
 
-`		return port;`
+`return port;`
 
-`	}`
+`}`
 
-`	public void setPort(int port) {`
+`public void setPort(int port) {`
 
-`		this.port = port;`
+`this.port = port;`
 
-`	}`
+`}`
 
-`	public long getTimeout() {`
+`public long getTimeout() {`
 
-`		return timeout;`
+`return timeout;`
 
-`	}`
+`}`
 
-`	public void setTimeout(long timeout) {`
+`public void setTimeout(long timeout) {`
 
-`		this.timeout = timeout;`
+`this.timeout = timeout;`
 
-`	}`
+`}`
 
-`	public List<Map<String, String>> getPoolConfig() {`
+`public List<Map<String, String>> getPoolConfig() {`
 
-`		return poolConfig;`
+`return poolConfig;`
 
-`	}`
+`}`
 
-`	public void setPoolConfig(List<Map<String, String>> poolConfig) {`
+`public void setPoolConfig(List<Map<String, String>> poolConfig) {`
 
-`		this.poolConfig = poolConfig;`
+`this.poolConfig = poolConfig;`
 
-`	}`
+`}`
 
-`}`
+`}`
 
-\*\*\*
+---
 
-\#\# @Transactional
+## @Transactional
 
 数据库的事物管理，若是同时插入两条信息，失败则会同时回滚（查询的时候不用加）\#\# @SpringBootApplication
 
-申明让Spring boot 自动给程序进行必要的配置，这个配置等于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan 
+申明让Spring boot 自动给程序进行必要的配置，这个配置等于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan
 
-\*\*\*
+---
 
-\#\# @Controller
+## @Controller
 
 用于定义控制类，在Spring项目中将用户发来的url请求转发到对应的服务器接口（Service层）
 
-\*\*\*
+---
 
-\#\# @RestController
+## @RestController
 
 用于标注控制层组件，等同于@ResponseBody+@Controller
 
-\*\*\*
+---
 
-\#\# @RequestMapping
+## @RequestMapping
 
 提供路由信息，负责映射url到具体函数，其组合注解如下：
 
-- @GetMapping
+* @GetMapping
 
-- @PostMapping
+* @PostMapping
 
-- @DeleteMapping
+* @DeleteMapping
 
-- @PutMapping
+* @PutMapping
 
-\*\*\*
+---
 
-\#\# @Autowired
+## @Autowired
 
 自动导入依赖的bean
 
-\*\*\*
+---
 
-\#\# @Value
+## @Value
 
 注入application中配置的属性值
 
-\`\`\`
+`@Value(value = “#{message}”)`
 
-@Value\(value = “\#{message}”\) 
+`private String message;`
 
-private String message;
+---
 
-\`\`\`
-
-\*\*\*
-
-\#\# @Bean
+## @Bean
 
 用@Bean标注方法等价于XML中配置的bean。
 
-\*\*\*
+---
 
-\#\# @Component
+## @Component
 
 泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。
 
-\*\*\*
+---
 
-\#\# @PathVariable
+## @PathVariable
 
 获取url中的数据
 
-\`\`\`
+`RequestMapping(“user/get/mac/{macAddress}”)`
 
-RequestMapping\(“user/get/mac/{macAddress}”\) 
+`public String getByMacAddress(@PathVariable String macAddress){`
 
-public String getByMacAddress\(@PathVariable String macAddress\){ 
+`//do something;`
 
-//do something; 
+`}`
 
-} 
+---
 
-\`\`\`
-
-\*\*\*
-
-\#\# @RequestParam
+## @RequestParam
 
 获取请求中传过来的值
 
-\`\`\`
+`@RequestParam(Value = "id", required = false, defaultValue =0)`
 
-@RequestParam\(Value = "id", required = false, defaultValue =0\)
+---
 
-\`\`\`
-
-\*\*\*
-
-\#\# @ConfigurationProperties
+## @ConfigurationProperties
 
 将配置文件转成对象，yml配置：
 
-\`\`\`
-
-spring: 
-
-  redis: 
-
+```
+spring:
+  redis:
     dbIndex: 0
-
+    
     hostName: 192.168.58.133
-
+    
     password: nmamtf
-
+    
     port: 6379
-
+    
     timeout: 0
-
+    
     poolConfig: 
-
+    
       - maxIdle: 8
-
+    
       - minIdle: 0
-
+    
       - maxActive: 8
-
+    
       - maxWait: -1
-
-\`\`\`
+```
 
 定义转换对象：
 
@@ -344,103 +329,101 @@ spring:
 
 @Component
 
-@ConfigurationProperties\(prefix="spring.redis"\)  
+@ConfigurationProperties\(prefix="spring.redis"\)
 
 public class RedisProps {
 
- 
+```
+private int dbIndex;
 
-	private int dbIndex;
+@NotNull
 
-	@NotNull
+private String hostname;
 
-	private String hostname;
+private String password;
 
-	private String password;
+@NotNull
 
-	@NotNull
+private int port;
 
-	private int port;
+private long timeout;
 
-	private long timeout;
+private List&lt;Map&lt;String,String&gt;&gt; poolConfig;
 
-	private List&lt;Map&lt;String,String&gt;&gt; poolConfig;
 
-	
 
-	public int getDbIndex\(\) {
+public int getDbIndex\(\) {
 
-		return dbIndex;
+    return dbIndex;
 
-	}
+}
 
-	public void setDbIndex\(int dbIndex\) {
+public void setDbIndex\(int dbIndex\) {
 
-		this.dbIndex = dbIndex;
+    this.dbIndex = dbIndex;
 
-	}
+}
 
-	public String getHostname\(\) {
+public String getHostname\(\) {
 
-		return hostname;
+    return hostname;
 
-	}
+}
 
-	public void setHostname\(String hostname\) {
+public void setHostname\(String hostname\) {
 
-		this.hostname = hostname;
+    this.hostname = hostname;
 
-	}
+}
 
-	public String getPassword\(\) {
+public String getPassword\(\) {
 
-		return password;
+    return password;
 
-	}
+}
 
-	public void setPassword\(String password\) {
+public void setPassword\(String password\) {
 
-		this.password = password;
+    this.password = password;
 
-	}
+}
 
-	public int getPort\(\) {
+public int getPort\(\) {
 
-		return port;
+    return port;
 
-	}
+}
 
-	public void setPort\(int port\) {
+public void setPort\(int port\) {
 
-		this.port = port;
+    this.port = port;
 
-	}
+}
 
-	public long getTimeout\(\) {
+public long getTimeout\(\) {
 
-		return timeout;
+    return timeout;
 
-	}
+}
 
-	public void setTimeout\(long timeout\) {
+public void setTimeout\(long timeout\) {
 
-		this.timeout = timeout;
+    this.timeout = timeout;
 
-	}
+}
 
-	public List&lt;Map&lt;String, String&gt;&gt; getPoolConfig\(\) {
+public List&lt;Map&lt;String, String&gt;&gt; getPoolConfig\(\) {
 
-		return poolConfig;
+    return poolConfig;
 
-	}
+}
 
-	public void setPoolConfig\(List&lt;Map&lt;String, String&gt;&gt; poolConfig\) {
+public void setPoolConfig\(List&lt;Map&lt;String, String&gt;&gt; poolConfig\) {
 
-		this.poolConfig = poolConfig;
+    this.poolConfig = poolConfig;
 
-	}
-
-	
+}
+```
 
 }
 
