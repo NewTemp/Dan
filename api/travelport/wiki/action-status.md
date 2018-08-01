@@ -6,19 +6,21 @@
 
 * **ACTIVE**
 
-       在即使購買的情況下，將ACH\(_Airline Content Hub_\)請求設置為“ACTIVE”。
+  ```
+   在即使購買的情況下，將ACH\(_Airline Content Hub_\)請求設置為“ACTIVE”。
+  ```
 
 * **TAW**
 
   ```
-    _Ticket At Will. _設置將PNR放在售票隊列上的時間，PNR不會自動出票，只是放在隊列中。
+    _Ticket At Will_. 設置將PNR放在售票隊列上的時間，PNR不會自動出票，只是放在隊列中。
     注意：需要相應的_TicketDate_屬性。
   ```
 
 * **TTL**
 
   ```
-    Ticket Time Limit. 設置將PNR放在售票隊列上的時間，PNR不會自動出票，只是放在隊列中。通常，
+    _Ticket Time Limit_. 設置將PNR放在售票隊列上的時間，PNR不會自動出票，只是放在隊列中。通常，
     選擇“TTL”值，以便在出現問題或者
   不出票時自動取消PNR。
     注意：需要相應的TicketDate屬性。
@@ -27,7 +29,7 @@
 * **TAU**
 
   ```
-    _Arrange Ticketing Date. _相當於_Worldspan_中的TAX\(稅\)。
+    _Arrange Ticketing Date_. 相當於_Worldspan_中的TAX\(稅\)。
   ```
 
 * **Unknown**
@@ -41,7 +43,7 @@
 * **TLCXL**
 
   ```
-    _Canceled by TTL._表示PNR的TTL时间已到期，系统自动取消航段\(AirSegment\)。
+    _Canceled by TTL._ 表示PNR的TTL时间已到期，系统自动取消航段\(AirSegment\)。
   ```
 
 * **ACTIVE**
@@ -54,7 +56,7 @@
 * **CXL**
 
   ```
-   _ Canceled._收到了PNR的取消請求，不會採取進一步行動。
+   _ Canceled_. 收到了PNR的取消請求，不會採取進一步行動。
   ```
 
 ### NODE
