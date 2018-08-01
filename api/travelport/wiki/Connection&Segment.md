@@ -13,7 +13,7 @@
   <air:Connection SegmentIndex="4">
 ```
 
-SegmentIndex顯示了連接指示符必須存在的航段。SegmentIndex的值等於航段列表中的AirSegment的位置，这是一个航空定价解决方案的一部分。例如，使用Low Fare Shopping返回上述航段列表：
+SegmentIndex顯示了連接指示符必須存在的航段。SegmentIndex的值等於航段列表中的AirSegment的位置，这是一个航空定價解決方案的一部分。例如，使用Low Fare Shopping返回上述航段列表：
 
 ```
   SegmentIndex="0" 將連接到列表中的第1個位置的航段。
@@ -57,8 +57,6 @@ SegmentIndex顯示了連接指示符必須存在的航段。SegmentIndex的值�
 請記住，在Low Fare Shopping的響應示例中，SegmentIndex的指標為0,1,3,4，這意味著在Air Pricing的請求中，AirSegment的1,2,4,5需要連接指示符。
 
 ![](/assets/4.png)
-
-
 
 ### NODE：Air Availability響應中的連接指示符用於Air Pricing和Air Booking，因為它來自Low Fare Shopping的響應。
 
