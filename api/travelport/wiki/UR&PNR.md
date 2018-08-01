@@ -41,7 +41,15 @@ UR識別旅行者的整個預定文件，包括一般旅行者信息和旅遊供
 
 ### _Transaction 1_
 
+客戶端預定了Montreal和Vancouver的往返航班。出境航班通過Galileo GDS在A航空公司預定，入境航班通過ACH在B航空公司預定。這個預定是通過AirCreateReservationReq發起的，用於處理一個聚合的1G/ACH請求。
 
+在響應中，返回了UR**123456**。這個UR是自動生成的，并包含來自兩個PNR的數據，這些數據是由各自的主機系統生成的：
+
+* Galileo **ABCDEF**，存儲出境航班數據。
+
+* ACH **UVWXYZ**，存儲入境航班數據。
+
+![](/assets/5.png)
 
 
 
