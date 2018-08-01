@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/api/travelport/wiki/action-status.md" beforeDir="false" afterPath="$PROJECT_DIR$/api/travelport/wiki/action-status.md" afterDir="false" />
-    </list>
+    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,21 +44,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="action-status.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/travelport/wiki/action-status.md">
+      <file leaf-file-name="Connection&amp;Segment.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/travelport/wiki/Connection&amp;Segment.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form-of-payment.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/travelport/wiki/form-of-payment.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="433">
+                <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -80,7 +70,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1592" />
     <option name="height" value="1000" />
@@ -207,7 +197,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533095785437</updated>
-      <workItem from="1533095787611" duration="1299000" />
+      <workItem from="1533095787611" duration="1313000" />
     </task>
     <task id="LOCAL-00001" summary="add WK">
       <created>1533095881281</created>
@@ -220,10 +210,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1299000" />
+    <option name="totallyTimeSpent" value="1313000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
@@ -284,14 +274,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/lowfaresearch.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/travelport/wiki/action-status.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -304,6 +286,24 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/lowfaresearch.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/travelport/wiki/Connection&amp;Segment.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="433">
+            <caret line="50" column="11" selection-start-line="50" selection-start-column="11" selection-end-line="50" selection-end-column="11" />
+          </first_editor>
           <second_editor />
         </state>
       </provider>
