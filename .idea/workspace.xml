@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="" />
+    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/api/travelport/wiki/ActionStatus.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/travelport/wiki/FormOfPayment.md" beforeDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,6 +62,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="REBASE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -197,7 +201,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1533095785437</updated>
-      <workItem from="1533095787611" duration="1313000" />
+      <workItem from="1533095787611" duration="2000000" />
     </task>
     <task id="LOCAL-00001" summary="add WK">
       <created>1533095881281</created>
@@ -210,7 +214,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1313000" />
+    <option name="totallyTimeSpent" value="2000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
