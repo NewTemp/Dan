@@ -1,4 +1,4 @@
-# Form of Payment
+# Form of Payment\(付款方式\)
 
 ---
 
