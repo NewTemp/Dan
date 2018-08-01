@@ -43,13 +43,37 @@ UR識別旅行者的整個預定文件，包括一般旅行者信息和旅遊供
 
 客戶端預定了Montreal和Vancouver的往返航班。出境航班通過Galileo GDS在A航空公司預定，入境航班通過ACH在B航空公司預定。這個預定是通過AirCreateReservationReq發起的，用於處理一個聚合的1G/ACH請求。
 
-在響應中，返回了UR**123456**。這個UR是自動生成的，并包含來自兩個PNR的數據，這些數據是由各自的主機系統生成的：
+在響應中，返回了UR **123456**。這個UR是自動生成的，并包含來自兩個PNR的數據，這些數據是由各自的主機系統生成的：
 
 * Galileo **ABCDEF**，存儲出境航班數據。
 
 * ACH **UVWXYZ**，存儲入境航班數據。
 
 ![](/assets/5.png)
+
+### _Transaction 2_
+
+在搜索和選擇酒店之後，客戶端就通過Galileo使用UniversalRecordModifyReq / UniversalModifyCmd / HotelAdd來增加一個對酒店預定的請求。通過在請求中指定U R**123456**和Galileo PNR **ABCDEF**，酒店預定將被添加到現有的UR **123456**中的Galileo PNR **ABCDEF**中。
+
+響應返回的是包含酒店預定的PNR **ABCDEF** 修改的UR。
+
+![](/assets/6.png)
+
+### _Transaction 3_
+
+在搜索和選擇一輛汽車后，客戶端就通過Galileo使用VehicleCreateReservationReq來增加一個對汽車預定的請求。按照設定，此次交易產生了一個新的PNR，VehicleCreateReservationReq不能用來對現有的PNR進行修改。
+
+通過在請求中指定UR **123456**，汽車預定就作為第二個Galileo PNR **GHIJKL**被添加到現有的UR **123456**中。
+
+**注意**：車輛預定可以使用UniversalRecordModifyReq/UniversalModifyCmd/VehicleAdd來交替的添加到最初的Galileo PNR **ABCDEF**中。
+
+這個請求返回了一個添加了新的Galileo PNR **GHIJKL**的UR。
+
+![](/assets/7.png)
+
+### _Transaction 4_
+
+PNR還可用於存儲不受UR支持的提供商和供應商預定的被動數據。在下面的示例中，一個SDK segment
 
 
 
