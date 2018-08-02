@@ -73,9 +73,20 @@ UR識別旅行者的整個預定文件，包括一般旅行者信息和旅遊供
 
 ### _Transaction 4_
 
-PNR還可用於存儲不受UR支持的提供商和供應商預定的被動數據。在下面的示例中，一個SDK segment
+PNR還可用於存儲不受Universal API支持的提供商和供應商預定的被動數據。在下面的示例中，一個SDK segment用於通過航空供應商D為Vancouver本地航班預定添加數據。
 
+由於Universal API提供商不支持此運營商。
 
+* 不能通過Universal API來創建預定。不過，預定的數據可以通過使用通用的“SDK”提供商進行AirCreateReservationReq請求調用被分配到Air Segment然後存儲在Universal API中。
+* 存儲在PNR中的數據無效，不能通過Universal API修改或取消。要修改或取消預定，必須聯繫外幣供應商。隨後對預定數據的任何修改都必須在Universal API中手動修改。
+
+**注意：**如果一個PNR是由一個Universal API支持的供應商在Universal API之外創建的，那麼PNR可以被導入到Universal API中。
+
+該響應返回了一個添加了SDK PNR **MNOPQR**的UR。
+
+![](/assets/8.png)
+
+### _Transaction 5_
 
 
 
