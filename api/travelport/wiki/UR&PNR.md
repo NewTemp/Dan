@@ -88,5 +88,9 @@ PNR還可用於存儲不受Universal API支持的提供商和供應商預定的�
 
 ### _Transaction 5_
 
+Passive segment（無源段）也用來包含與旅行段沒有直接關係的手動輸入的輔助數據。比如，可以創建一個PNR來存儲旅行者後台使用所需的數據。在這個例子中，PassiveCreateReservationReq用來創建一個無源段，其中包含會計備註，發票信息或其他可以發送到旅行供應商的第三方數據庫或應用程序的數據。
 
+該響應返回了一個添加了Passive PNR **STUVWX**的UR。
+
+![](/assets/9.png)
 
