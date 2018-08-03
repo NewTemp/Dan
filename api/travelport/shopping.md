@@ -121,6 +121,8 @@ WCOB|Wheelchair Required on Board|||
 WEAP|Weapons|||
 XBAG|Excess Baggage|||
 
-* DOCS SSR
+* ####DOCS SSR
 
- 對於
+ 對於DOCS SSR，旅行證件類型，旅行證件發佈國家/州和證件號碼必須全部輸入或者全部不輸入。
+ * 例如
+      SSR Type="DOCS" FreeText="P/GB/S12345678/GB/12JUN63/M/23OCT14/SMITH/JOHN" Carrier="U2"/>
