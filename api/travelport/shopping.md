@@ -138,9 +138,13 @@
 
 * #### DOCA SSR
 
-     DASDA
+  對於DOCA SSR，如果指定地址類型（R-Residential或D-Destination地址），則應指定地址的國家/地區，反之亦然。
 
-  
+  * 例如，SSR Type =“DOCA”FreeText =“HK1 / R / US / 1600 SMITH ST / HOUSTON / TX / 77001”Carrier =“BA”                                             /R/指定住址的地址碼，/US/指定國家的地址碼，國家代碼之後的地址格式是用“/”來分隔每個地址元素。
+
+* #### DOCO SSR
+
+  對於DOCO SSR，如果簽證信息的要求因提供者而異。對於所有的提供者，附加的旅行信息證件類型（例如，護照）和附加的旅行信息號碼（例如，護照號碼）必須一起登記或者全部不登記。
 
 
 
