@@ -140,7 +140,7 @@
 
   對於DOCA SSR，如果指定地址類型（R-Residential或D-Destination地址），則應指定地址的國家/地區，反之亦然。
 
-  * 例如，SSR Type =“DOCA”FreeText =“HK1 / R / US / 1600 SMITH ST / HOUSTON / TX / 77001”Carrier =“BA”                                             /R/指定住址的地址碼，/US/指定國家的地址碼，國家地址碼之後的地址格式是用“/”來分隔每個地址元素。
+  * 例如，<br/>SSR Type =“DOCA”FreeText =“HK1 / R / US / 1600 SMITH ST / HOUSTON / TX / 77001”Carrier =“BA”                                             /R/指定住址的地址碼，/US/指定國家的地址碼，國家地址碼之後的地址格式是用“/”來分隔每個地址元素。
 
 * #### DOCO SSR
 
@@ -152,8 +152,21 @@
 |Galileo|No|Yes|Yes|Yes|Yes|No|No|
 |ACH|No|No|No|No|No|No|Yes|
 * ### SSR Status Codes
-SSR有狀態碼來比搜啊會它們在執行過程中的狀態。例如：<br/> 
-<com:SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"/>
+SSR有狀態碼來比搜啊會它們在執行過程中的狀態。例如：<br/>
+SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"
+|Status Code|Description|
+|--|---|
+|NN|SSR已經被請求|
+|PN|SSR還待確認|
+|UN|供應商（承運人）不能滿足要求。在這種情況下，SSR將保留在PNR中作為該讀物被請求和拒絕的證據|
+|HK|SSR已經被確認|
+|other|承運人可以發送不同的狀態，或者選擇不以HK消息答復SSR，這意味著SSR的狀態將始終保持為“NN”|
+
+
+
+
+
+>
 
 
 
