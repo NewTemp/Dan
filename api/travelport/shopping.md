@@ -124,7 +124,7 @@
 
   對於DOCS SSR，旅行證件類型，旅行證件發佈國家/州和證件號碼必須全部輸入或者全部不輸入。
 
-  * 例如，SSR Type="DOCS" FreeText="P/GB/S12345678/GB/12JUN63/M/23OCT14/SMITH/JOHN" Carrier="U2"/&gt;                                   這個例子中，FreeText的值是：
+  * 例如，SSR Type="DOCS" FreeText="P/GB/S12345678/GB/12JUN63/M/23OCT14/SMITH/JOHN" Carrier="U2"/<br/>這個例子中，FreeText的值是：
 
     * P = 護照\(旅行證件類型\)
     * GB = 發行國
@@ -161,13 +161,9 @@ SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23O
 |UN|供應商（承運人）不能滿足要求。在這種情況下，SSR將保留在PNR中作為該讀物被請求和拒絕的證據|
 |HK|SSR已經被確認|
 |other|承運人可以發送不同的狀態，或者選擇不以HK消息答復SSR，這意味著SSR的狀態將始終保持為“NN”|
-
-
-
-
-
->
-
-
-
-
+* ## BookingTravelerName
+|字段|含義|
+|---|---|
+|Prefix|性別（可選）|
+|First|名|
+|Last|姓|
