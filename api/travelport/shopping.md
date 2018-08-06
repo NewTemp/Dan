@@ -153,7 +153,7 @@
 |ACH|No|No|No|No|No|No|Yes|
 * ### SSR Status Codes
 SSR有狀態碼來比搜啊會它們在執行過程中的狀態。例如：<br/>
-SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"
+SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"<br/>
 |Status Code|Description|
 |--|---|
 |NN|SSR已經被請求|
