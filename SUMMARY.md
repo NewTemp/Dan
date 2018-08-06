@@ -26,4 +26,4 @@
 
 ## Spring Cloud
 * [Spring Cloud](Spring-Cloud/README.md)
-    * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/链路跟踪Zipkin.md)
+    * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
