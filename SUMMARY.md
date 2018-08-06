@@ -12,11 +12,11 @@
         * [Connection Segment Logic](api/travelport/wiki/Connection&Segment.md)
         * [Form of Payment](api/travelport/wiki/form-of-payment.md)
         * [UR&PNR](api/travelport/wiki/UR&PNR.md)
-     * [shopping](api/travelport/shopping.md)
+    * [shopping](api/travelport/shopping.md)
   
 ## DEV Service
 * [DEV Service](DEV Service/README.md)
-    * [Linux Command](DEV Service/Linux Command/README.md)
+    * [Linux Command](DEV Service/Linux Command/Linux Command.md)
     * [Service Building](DEV Service/Service Building/README.md)
         
 
