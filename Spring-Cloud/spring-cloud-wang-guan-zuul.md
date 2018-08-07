@@ -44,11 +44,20 @@ public class ZuulApplication {
 
 用浏览器访问localhost:8040，即可测试是否启动项目。
 
-
-
 ##### 三、服务化
 
 ##### Zuul注册到eureka server，通过url的映射转化为服务名ServiceId进行映射。
+
+1.添加依赖pom.xml
+
+添加服务eureka注册、发现组建
+
+```
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+        </dependency>
+```
 
 
 
