@@ -166,7 +166,6 @@ http.authorizeRequests()
                 .rememberMe()
                 .rememberMeParameter("remember")//自定义rememberMe的name值，默认remember-Me
                 .tokenValiditySeconds(604800);//记住我的时间/秒
-
 ```
 
 自定义CustomAccessDecisionManager类实现AccessDecisionManager接口,进行权限的验证:从SecurityContext中取出之前保存的Authentication对象,然后比较访问路径的权限和Authentication对象中的权限大小,判断是否能访问此路径.
@@ -212,8 +211,7 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
         return true;
     }
 }
-
 ```
 
-
+6-关闭spring security crsf protection默认的http 403 access denied处理方式\(或者叫防范CSRF跨站请求伪造攻击\)
 
