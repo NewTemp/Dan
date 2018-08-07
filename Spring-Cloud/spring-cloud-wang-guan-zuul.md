@@ -51,7 +51,7 @@ public class ZuulApplication {
 前提：
 
 * 先启动eureka，端口号为8761
-* 再启动微服务account，端口号为9090，并注册到eureka
+* 再启动微服务account，端口号为9090，注册到eureka，并存在请求localhost:9090/account/test
 
 1.添加依赖pom.xml
 
