@@ -121,15 +121,20 @@ public class PreFilter extends ZuulFilter {
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
-
-            HttpServletResponse response = ctx.getResponse();
-            response.addHeader("Access-Control-Allow-Origin", "*");
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("text/html;charset=UTF-8");
+            HttpServletResponse res= ctx.getResponse();
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE ,PUT");
+            res.setHeader("Access-Control-Max-Age", "3600");
+            res.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since,"
+                + " Pragma, Last-Modified, Cache-Control, Expires, Content-Type, "
+                + "X-E4M-With,userId,token,Authorization,deviceId,Access-Control-Allow-Origin,Access-Control-Allow-Headers,Access-Control-Allow-Methods");
+            res.setHeader("Access-Control-Allow-Credentials", "true");
+            return null;
     }
 }
 ```
 
-2.
+2.启动类ZuulApplication.java，添加如下
+
+
 
