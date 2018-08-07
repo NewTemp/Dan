@@ -154,5 +154,7 @@ public class CorsFilter extends ZuulFilter {
 
 ##### 五、网关权限
 
+核心框架为Spring Cloud security。所有微服务经过网关zuul，进行权限控制。
+
 
 
