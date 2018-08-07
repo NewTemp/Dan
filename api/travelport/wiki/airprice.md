@@ -25,28 +25,26 @@ Ticketless：票務不適用於此運營商/解決方案。
 ## AirPricingSolution
 
 * ### AirPricingInfo
-
 * * #### PricingMethod
 
- 票價方式，對應傳參有以下種類：
+  票價方式，對應傳參有以下種類：
 
 Auto , Manual , ManualFare , Guaranteed , Invalid , Restored , Ticketed , Unticketable , Reprice , Expired ,   AutoUsingPrivateFare , GuaranteedUsingAirlinePrivateFare , Airline , AgentAssisted , VerifyPrice , AltSegmentRemovedReprice , AuxiliarySegmentRemovedReprice , DuplicateSegmentRemovedReprice , Unknown , GuaranteedUsingAgencyPrivateFare , AutoRapidReprice
 
 * * #### PricingType
 
-定價類型：
+定價類型：TicketRecord，StoredFare，PricingInstruction。
 
-TicketRecord：
+如果PNR中只有一个自动定价票价，则自动定价票价将作为PricingType=“StoredFare”返回。由于如果将另一个存储票价添加到PNR，Worldspan和Axess将覆盖现有的存储票价，如果它们位于不同的定价组中，则必须将多个票价作为票证记录返回。
 
-StoredFare：
+对于具有多种票价的请求：
 
- PricingInstruction：
+如果每个PricingInfo实例的AirPricingInfoGroup值不同，则返回PricingType=“TicketRecord”。
+
+如果每个PricingInfo实例的AirPricingInfoGroup值相同，则返回PricingType=“Stored Fare”。Universal API为PNR添加了一个票价，它将所有AirPricingInfo值组合在一起。
 
 * * #### FareInfo
-
 * * * PrivateFare
 
 對應的類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
-
-
 
