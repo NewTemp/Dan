@@ -251,7 +251,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
-添加自定义验证类CustomAccessDecisionManager.java
+添加自定义验证类CustomAccessDecisionManager.java，用于对url过滤
 
 ```
 /**
