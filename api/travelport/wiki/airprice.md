@@ -25,7 +25,6 @@ Ticketless：票務不適用於此運營商/解決方案。
 ## AirPricingSolution
 
 * ### AirPricingInfo
-
 * * #### PricingMethod
 
     對應傳參有以下種類：
@@ -37,7 +36,7 @@ Ticketless：票務不適用於此運營商/解決方案。
     #### FareInfo
 
     * PrivateFare
-      對應得類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
+      對應的類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
 
 
 
