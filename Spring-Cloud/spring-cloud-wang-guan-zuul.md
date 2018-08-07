@@ -149,33 +149,5 @@ public class CorsFilter extends ZuulFilter {
 
 4.注意
 
-如果zuul
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+如果zuul配置了cors跨域问题，则不能在微服务下面在配置cors跨域，不然会出现各种问题。
 
