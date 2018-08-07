@@ -166,7 +166,7 @@ account微服务的接口前提：
 * POST /account/token/check/{token} 为检测token是否存在
 * DELETE /account/token/{token} 删除token
 
-1.添加依赖pom.xml
+1.添加依赖pom.xml，feign用户访问微服务account
 
 ```
         <dependency>
