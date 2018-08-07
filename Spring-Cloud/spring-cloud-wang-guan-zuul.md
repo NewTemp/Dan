@@ -318,5 +318,291 @@ public class CustomGrantedAuthority implements GrantedAuthority {
 }
 ```
 
+创建自定义用户实体（Spring Security\)
+
+```
+
+
+/**
+ * 自定义用户实体（Spring Security）
+ */
+@Data
+public class CustomUserDetails implements UserDetails {
+    private Integer id;
+    private String userName;
+    private String password;
+    private String email;
+    private String fullName;
+    private Integer usable;
+    private List<GrantedAuthority> authorities;
+    private String token;
+    //重写
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userName;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+}
+
+```
+
+
+
+```
+/**
+
+
+*
+自定义用户实体（Spring
+Security）
+
+
+*/
+
+
+@Data
+
+
+public
+class
+CustomUserDetails
+implements
+UserDetails
+{
+
+
+private
+Integer
+id
+;
+
+
+private
+String
+userName
+;
+
+
+private
+String
+password
+;
+
+
+private
+String
+email
+;
+
+
+private
+String
+fullName
+;
+
+
+private
+Integer
+usable
+;
+
+
+private
+List
+<
+GrantedAuthority
+>
+authorities
+;
+
+
+private
+String
+token
+;
+
+
+//重写
+
+
+@Override
+
+
+public
+Collection
+<
+?
+extends
+GrantedAuthority
+>
+getAuthorities
+()
+{
+
+
+return
+this
+.
+authorities
+;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+String
+getPassword
+()
+{
+
+
+return
+this
+.
+password
+;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+String
+getUsername
+()
+{
+
+
+return
+this
+.
+userName
+;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+boolean
+isAccountNonExpired
+()
+{
+
+
+return
+true;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+boolean
+isAccountNonLocked
+()
+{
+
+
+return
+true;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+boolean
+isCredentialsNonExpired
+()
+{
+
+
+return
+true;
+
+
+}
+
+
+
+
+@Override
+
+
+public
+boolean
+isEnabled
+()
+{
+
+
+return
+true;
+
+
+}
+
+
+}
+
+
+```
+
 
 
