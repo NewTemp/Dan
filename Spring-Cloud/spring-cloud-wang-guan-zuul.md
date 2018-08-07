@@ -68,6 +68,8 @@ public class ZuulApplication {
 
 注册到eureka,并且配置路由转发。
 
+stripPrefix为false时，则保留account前缀，再转发url到微服务
+
 ```
 eureka:
   client:
