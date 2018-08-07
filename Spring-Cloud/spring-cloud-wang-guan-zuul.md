@@ -97,39 +97,39 @@ zuul:
 
 ##### 转发过滤器前，在HttpServletResponse添加跨域头
 
+1.创建PreFilter.java
 
+```
+@Component
+public class PreFilter extends ZuulFilter {
 
+    @Override
+    public String filterType() {
+        return "pre";
+    }
 
+    @Override
+    public int filterOrder() {
+        return 0;
+    }
 
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
 
+    @Override
+    public Object run() {
+        RequestContext ctx = RequestContext.getCurrentContext();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            HttpServletResponse response = ctx.getResponse();
+            response.addHeader("Access-Control-Allow-Origin", "*");
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+    }
+}
+```
 
 
 
