@@ -500,5 +500,589 @@ public class GoAccessDeniedHandler implements AccessDeniedHandler {
 }
 ```
 
+创建自定义登陆和注销类LoginController.java
+
+```
+
+
+@RestController
+@RequestMapping
+@Api(value = "login & logout", tags = "login")
+public class LoginController {
+    @Autowired
+    MessageService messageService;
+    @Autowired
+    AccountFeignClient accountFeignClient;
+
+    @ApiOperation(value = "user login")
+    @PostMapping("/login")
+    public SigmaResponse login(@RequestBody ReqUserLoginParam userLoginParam) {
+        if (userLoginParam == null
+                || StringUtil.isEmpty(userLoginParam.getUsername())
+                || StringUtil.isEmpty(userLoginParam.getPassword())) {
+            throw new MessageException("login.error.message");
+        }
+        SigmaResponse<UserFindResultBO> response = accountFeignClient.getUserByUsername(userLoginParam.getUsername());
+        UserFindResultBO user = response.getData();
+        //登陆验证
+        if (user == null) {
+            throw new MessageException("login.error.message");
+        }
+        SigmaResponse<Boolean> checkResult = accountFeignClient.checkPassword(
+            new ReqPasswordCheckParam(userLoginParam.getPassword(), user.getPassword()));
+        if (checkResult.getData() == null || checkResult.getData() == false) {
+            throw new MessageException("login.error.message");
+        }
+        if (user.getUsable() != 1) {
+            throw new MessageException("login.enableError.message");
+        }
+        SigmaResponse<List<MenuListForLoginBO>> menuListForLogin = accountFeignClient.getMenuListForLogin(user.getId());
+        List<MenuListForLoginBO> menuList = menuListForLogin.getData();
+        //菜单权限配置（Security框架）
+        List<MenuAuth> menuAuths = new ArrayList<>();
+        for (MenuListForLoginBO menu : menuList) {
+            if (menu != null && menu.getName() != null && menu.getIsMenu() == 0) {
+                MenuAuth authority = new MenuAuth();
+                authority.setUrl(menu.getUrl());
+                authority.setMethod(menu.getMethod());
+                menuAuths.add(authority);
+            }
+        }
+        //token生成
+        String token = SystemUtil.createToken();
+        //自定义保存redis的用户对象
+        CustomUser customUser = CopyUtil.copyObject(user, CustomUser.class);
+        customUser.setAuthorities(menuAuths);
+        customUser.setToken(token);
+        //保存到redis中
+        accountFeignClient.saveToken(customUser);
+
+        //自定义返回user对象
+        RespUserLoginParam respUserLoginParam = CopyUtil.copyObject(customUser, RespUserLoginParam.class);
+//        List<MenuListResultBO> boList = CopyUtil.copyList(menuList, MenuListResultBO.class);
+//        List treeJson = MenuUtil.createTreeJson(boList, true);
+//        respUserLoginParam.setMenus(treeJson);
+        //返回response对象
+        SigmaResponse<RespUserLoginParam> respUserFindParamSigmaResponse = new SigmaResponse<>();
+        respUserFindParamSigmaResponse.setHeader(new SigmaResponseHeader("0", 
+            messageService.getMessage("login.seccess.message"), null));
+        respUserFindParamSigmaResponse.setData(respUserLoginParam);
+        return respUserFindParamSigmaResponse;
+    }
+
+    @ApiOperation(value = "user logout")
+    @PostMapping("/logout")
+    public SigmaResponse<String> login(HttpServletRequest request) {
+        String token = SystemUtil.getToken(request);
+        accountFeignClient.deleteToken(token);
+        SigmaResponse<String> respUserFindParamSigmaResponse = new SigmaResponse<>();
+        respUserFindParamSigmaResponse.setHeader(new SigmaResponseHeader("0", 
+            messageService.getMessage("logout.success.message"), null));
+        return respUserFindParamSigmaResponse;
+    }
+}
+```
+
+```
+@RestController
+
+
+@RequestMapping
+
+
+@Api
+(
+value
+=
+"login
+&
+logout"
+,
+tags
+=
+"login"
+)
+
+
+public
+class
+LoginController
+{
+
+
+@Autowired
+
+
+MessageService
+messageService
+;
+
+
+@Autowired
+
+
+AccountFeignClient
+accountFeignClient
+;
+
+
+
+
+@ApiOperation
+(
+value
+=
+"user
+login"
+)
+
+
+@PostMapping
+(
+"/login"
+)
+
+
+public
+SigmaResponse
+login
+(
+@RequestBody
+ReqUserLoginParam
+userLoginParam)
+{
+
+
+if
+(userLoginParam
+==
+null
+
+
+||
+StringUtil.
+isEmpty
+(userLoginParam.getUsername())
+
+
+||
+StringUtil.
+isEmpty
+(userLoginParam.getPassword()))
+{
+
+
+throw
+new
+MessageException(
+"login.error.message"
+)
+;
+
+
+}
+
+
+SigmaResponse
+<
+UserFindResultBO
+>
+response
+=
+accountFeignClient
+.getUserByUsername(userLoginParam.getUsername())
+;
+
+
+UserFindResultBO
+user
+=
+response.getData()
+;
+
+
+//登陆验证
+
+
+if
+(user
+==
+null
+)
+{
+
+
+throw
+new
+MessageException(
+"login.error.message"
+)
+;
+
+
+}
+
+
+SigmaResponse
+<
+Boolean
+>
+checkResult
+=
+accountFeignClient
+.checkPassword(
+new
+ReqPasswordCheckParam(userLoginParam.getPassword()
+,
+user.getPassword()))
+;
+
+
+if
+(checkResult.getData()
+==
+null
+||
+checkResult.getData()
+==
+false
+)
+{
+
+
+throw
+new
+MessageException(
+"login.error.message"
+)
+;
+
+
+}
+
+
+if
+(user.getUsable()
+!=
+1
+)
+{
+
+
+throw
+new
+MessageException(
+"login.enableError.message"
+)
+;
+
+
+}
+
+
+SigmaResponse
+<
+List
+<
+MenuListForLoginBO
+>
+>
+menuListForLogin
+=
+accountFeignClient
+.getMenuListForLogin(user.getId())
+;
+
+
+List
+<
+MenuListForLoginBO
+>
+menuList
+=
+menuListForLogin.getData()
+;
+
+
+//菜单权限配置（Security框架）
+
+
+List
+<
+MenuAuth
+>
+menuAuths
+=
+new
+ArrayList
+<
+>
+()
+;
+
+
+for
+(MenuListForLoginBO
+menu
+:
+menuList)
+{
+
+
+if
+(menu
+!=
+null
+&
+&
+menu.getName()
+!=
+null
+&
+&
+menu.getIsMenu()
+==
+0
+)
+{
+
+
+MenuAuth
+authority
+=
+new
+MenuAuth()
+;
+
+
+authority.setUrl(menu.getUrl())
+;
+
+
+authority.setMethod(menu.getMethod())
+;
+
+
+menuAuths.add(authority)
+;
+
+
+}
+
+
+}
+
+
+//token生成
+
+
+String
+token
+=
+SystemUtil.
+createToken
+()
+;
+
+
+//自定义保存redis的用户对象
+
+
+CustomUser
+customUser
+=
+CopyUtil.
+copyObject
+(user
+,
+CustomUser.
+class
+)
+;
+
+
+customUser.setAuthorities(menuAuths)
+;
+
+
+customUser.setToken(token)
+;
+
+
+//保存到redis中
+
+
+accountFeignClient
+.saveToken(customUser)
+;
+
+
+
+
+//自定义返回user对象
+
+
+RespUserLoginParam
+respUserLoginParam
+=
+CopyUtil.
+copyObject
+(customUser
+,
+RespUserLoginParam.
+class
+)
+;
+
+
+//
+List
+<
+MenuListResultBO
+>
+boList
+=
+CopyUtil.copyList(menuList,
+MenuListResultBO.class);
+
+
+//
+List
+treeJson
+=
+MenuUtil.createTreeJson(boList,
+true);
+
+
+//
+respUserLoginParam.setMenus(treeJson);
+
+
+//返回response对象
+
+
+SigmaResponse
+<
+RespUserLoginParam
+>
+respUserFindParamSigmaResponse
+=
+new
+SigmaResponse
+<
+>
+()
+;
+
+
+respUserFindParamSigmaResponse.setHeader(
+new
+SigmaResponseHeader(
+"0"
+,
+messageService
+.getMessage(
+"login.seccess.message"
+)
+,
+null
+))
+;
+
+
+respUserFindParamSigmaResponse.setData(respUserLoginParam)
+;
+
+
+return
+respUserFindParamSigmaResponse
+;
+
+
+}
+
+
+
+
+@ApiOperation
+(
+value
+=
+"user
+logout"
+)
+
+
+@PostMapping
+(
+"/logout"
+)
+
+
+public
+SigmaResponse
+<
+String
+>
+login
+(HttpServletRequest
+request)
+{
+
+
+String
+token
+=
+SystemUtil.
+getToken
+(request)
+;
+
+
+accountFeignClient
+.deleteToken(token)
+;
+
+
+SigmaResponse
+<
+String
+>
+respUserFindParamSigmaResponse
+=
+new
+SigmaResponse
+<
+>
+()
+;
+
+
+respUserFindParamSigmaResponse.setHeader(
+new
+SigmaResponseHeader(
+"0"
+,
+messageService
+.getMessage(
+"logout.success.message"
+)
+,
+null
+))
+;
+
+
+return
+respUserFindParamSigmaResponse
+;
+
+
+}
+
+
+}
+```
+
 
 
