@@ -18,16 +18,18 @@ Required：僅返回可以通過電子票務發送的行程。
 
 Ticketless：票務不適用於此運營商/解決方案。
 
-## **AirPriceSolution**\(\)
+## **AirPricingSolution**\(機票價格方案\)
+
+* ### **AirPricingInfo**
+
+              &lt;PricingMethod&gt;
+
+#### 
 
 | Auto , Manual , ManualFare , Guaranteed , Invalid , Restored , Ticketed , Unticketable , Reprice , Expired , AutoUsingPrivateFare , GuaranteedUsingAirlinePrivateFare , Airline , AgentAssisted , VerifyPrice , AltSegmentRemovedReprice , AuxiliarySegmentRemovedReprice , DuplicateSegmentRemovedReprice , Unknown , GuaranteedUsingAgencyPrivateFare , AutoRapidReprice |
 | :--- |
 
 
-
-
-
-
-PrivateFare:   
+PrivateFare:  
 UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
 
