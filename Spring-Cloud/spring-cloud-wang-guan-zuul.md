@@ -158,7 +158,9 @@ public class CorsFilter extends ZuulFilter {
 
 account微服务的接口前提：
 
-/account/user/username/{username}为
+/account/user/username/{username}为根据用户名获取当前用户信息
+
+/account/menu/user/{id}为
 
 1.添加依赖pom.xml
 
