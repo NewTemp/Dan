@@ -50,13 +50,30 @@ public class ZuulApplication {
 
 1.添加依赖pom.xml
 
-添加服务eureka注册、发现组建
+添加组建服务eureka注册、发现
 
 ```
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+```
+
+2.配置文件application.yml
+
+注册到eureka,并且配置路由转发
+
+```
+eureka:
+  client:
+    service-url:
+      defaultZone:   http://localhost:8761/eureka
+zuul:
+  routes:
+    account:
+      path: /account/**
+      serviceId: account
+      stripPrefix: false
 ```
 
 
