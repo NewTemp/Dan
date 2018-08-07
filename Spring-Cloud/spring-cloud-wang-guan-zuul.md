@@ -83,5 +83,9 @@ zuul:
       stripPrefix: false
 ```
 
+3.测试
 
+网关zuul服务和account服务注册到eureka，如下图：
+
+![](/assets/QQ截图20180807170054.jpg)
 
