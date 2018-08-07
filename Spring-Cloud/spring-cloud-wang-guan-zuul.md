@@ -50,8 +50,8 @@ public class ZuulApplication {
 
 前提：
 
-* 开启eureka，端口号为8761
-* 开启微服务account，并注册到eureka
+* 先启动eureka，端口号为8761
+* 再启动微服务account，并注册到eureka
 
 1.添加依赖pom.xml
 
@@ -66,7 +66,7 @@ public class ZuulApplication {
 
 2.配置文件application.yml
 
-注册到eureka,并且配置路由转发
+注册到eureka,并且配置路由转发。
 
 ```
 eureka:
