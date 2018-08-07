@@ -251,5 +251,58 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+添加自定义验证类CustomAccessDecisionManager.java
+
+```
+
+/**
+ * 自定义验证权限
+ */
+@Component
+public class CustomAccessDecisionManager implements AccessDecisionManager {
+
+    //decide 方法是判定是否拥有权限的决策方法
+    @Override
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) 
+            throws AccessDeniedException, InsufficientAuthenticationException {
+        HttpServletRequest request = ((FilterInvocation) object).getHttpRequest();
+        String url, method;
+        AntPathRequestMatcher matcher;
+        for (GrantedAuthority ga : authentication.getAuthorities()) {
+            if (ga instanceof CustomGrantedAuthority) {
+                CustomGrantedAuthority urlGrantedAuthority = (CustomGrantedAuthority) ga;
+                url = urlGrantedAuthority.getUrl();
+                method = MethodEnum.getNameByCode(urlGrantedAuthority.getMethod());
+                matcher = new AntPathRequestMatcher(url);
+                if (matcher.matches(request)) {
+                    //当权限表权限的method为ALL时表示拥有此路径的所有请求方式权利。
+                    if (method.equals(request.getMethod()) || "ALL".equals(method)) {
+                        return;
+                    }
+                }
+            }
+        }
+        throw new AccessDeniedException("denied.error.message");
+    }
+
+
+    @Override
+    public boolean supports(ConfigAttribute attribute) {
+        return true;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return true;
+    }
+}
+
+
+```
+
+```
+
+```
+
 
 
