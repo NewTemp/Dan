@@ -321,8 +321,6 @@ public class CustomGrantedAuthority implements GrantedAuthority {
 创建自定义用户实体（Spring Security\)
 
 ```
-
-
 /**
  * 自定义用户实体（Spring Security）
  */
@@ -372,235 +370,84 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 }
-
 ```
 
-
+创建token管理类TokenSecurityContextRepository.java，重写SecurityContext（Spring Security）,token代替传统session
 
 ```
-/**
+@Component
+public class TokenSecurityContextRepository implements SecurityContextRepository {
 
+    @Autowired
+    AccountFeignClient accountFeignClient;
 
-*
-自定义用户实体（Spring
-Security）
+    /**
+     * 加载用户对象
+     *
+     * @param httpRequestResponseHolder
+     * @return
+     */
+    @Override
+    public SecurityContext loadContext(HttpRequestResponseHolder httpRequestResponseHolder) {
+        String token = SystemUtil.getToken(httpRequestResponseHolder.getRequest());
+        if (StringUtils.isEmpty(token)) {
+            return this.generateNewContext();
+        }
+        SigmaResponse<CustomUser> response = accountFeignClient.getToken(token);
+        CustomUser customUser = response.getData();
+        if (customUser == null) {
+            return this.generateNewContext();
+        }
+        CustomUserDetails user = new CustomUserDetails();
+        user.setUserName(user.getUsername());
+        BeanUtils.copyProperties(customUser, user);
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        for (MenuAuth menuAuth : customUser.getAuthorities()) {
+            CustomGrantedAuthority authority = new CustomGrantedAuthority();
+            authority.setMethod(menuAuth.getMethod());
+            authority.setUrl(menuAuth.getUrl());
+            authorities.add(authority);
+        }
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
+        return new SecurityContextImpl(authentication);
+    }
 
+    /**
+     * 保存用户对象
+     *
+     * @param securityContext
+     * @param httpServletRequest
+     * @param httpServletResponse
+     */
+    @Override
+    public void saveContext(SecurityContext securityContext, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    }
 
-*/
+    /**
+     * 验证用户对象
+     *
+     * @param httpServletRequest
+     * @return
+     */
+    @Override
+    public boolean containsContext(HttpServletRequest httpServletRequest) {
+        String token = SystemUtil.getToken(httpServletRequest);
+        if (StringUtils.isEmpty(token)) {
+            return false;
+        }
+        SigmaResponse<Boolean> response = accountFeignClient.checkToken(token);
+        return response.getData();
+    }
 
-
-@Data
-
-
-public
-class
-CustomUserDetails
-implements
-UserDetails
-{
-
-
-private
-Integer
-id
-;
-
-
-private
-String
-userName
-;
-
-
-private
-String
-password
-;
-
-
-private
-String
-email
-;
-
-
-private
-String
-fullName
-;
-
-
-private
-Integer
-usable
-;
-
-
-private
-List
-<
-GrantedAuthority
->
-authorities
-;
-
-
-private
-String
-token
-;
-
-
-//重写
-
-
-@Override
-
-
-public
-Collection
-<
-?
-extends
-GrantedAuthority
->
-getAuthorities
-()
-{
-
-
-return
-this
-.
-authorities
-;
-
-
+    /**
+     * 初始化用户对象
+     *
+     * @return
+     */
+    protected SecurityContext generateNewContext() {
+        return SecurityContextHolder.createEmptyContext();
+    }
 }
-
-
-
-
-@Override
-
-
-public
-String
-getPassword
-()
-{
-
-
-return
-this
-.
-password
-;
-
-
-}
-
-
-
-
-@Override
-
-
-public
-String
-getUsername
-()
-{
-
-
-return
-this
-.
-userName
-;
-
-
-}
-
-
-
-
-@Override
-
-
-public
-boolean
-isAccountNonExpired
-()
-{
-
-
-return
-true;
-
-
-}
-
-
-
-
-@Override
-
-
-public
-boolean
-isAccountNonLocked
-()
-{
-
-
-return
-true;
-
-
-}
-
-
-
-
-@Override
-
-
-public
-boolean
-isCredentialsNonExpired
-()
-{
-
-
-return
-true;
-
-
-}
-
-
-
-
-@Override
-
-
-public
-boolean
-isEnabled
-()
-{
-
-
-return
-true;
-
-
-}
-
-
-}
-
 
 ```
 
