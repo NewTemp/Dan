@@ -43,13 +43,13 @@ AllFares
 * ### AirPricingInfo
 * * #### PricingMethod
 
-  票價方式，由request入參AirPricingModifiers.FaresIndicator指定返回對應類型。對應傳參有以下種類：
+  票價方式，對應傳參有以下種類：
 
 Auto , Manual , ManualFare , Guaranteed , Invalid , Restored , Ticketed , Unticketable , Reprice , Expired ,   AutoUsingPrivateFare , GuaranteedUsingAirlinePrivateFare , Airline , AgentAssisted , VerifyPrice , AltSegmentRemovedReprice , AuxiliarySegmentRemovedReprice , DuplicateSegmentRemovedReprice , Unknown , GuaranteedUsingAgencyPrivateFare , AutoRapidReprice
 
 * * #### PricingType
 
-定價類型：TicketRecord，StoredFare，PricingInstruction。
+定價類型：TicketRecord，StoredFare，PricingInstruction。由request入參AirPricingModifiers.FaresIndicator指定返回對應類型。
 
 如果PNR中只有一个自动定价票价，则自动定价票价将作为PricingType=“StoredFare”返回。由于如果将另一个存储票价添加到PNR，Worldspan和Axess将覆盖现有的存储票价，如果它们位于不同的定价组中，则必须将多个票价作为票证记录返回。
 
