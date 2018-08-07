@@ -68,6 +68,8 @@ public class ZuulApplication {
 
 注册到eureka,并且配置路由转发。
 
+serviceId为微服务名称，path为路由地址
+
 stripPrefix为false时，则保留account前缀，再转发url到微服务
 
 ```
@@ -93,5 +95,5 @@ zuul:
 
 四、跨域问题
 
-
+转发过滤器前，
 
