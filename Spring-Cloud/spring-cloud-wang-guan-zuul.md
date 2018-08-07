@@ -254,7 +254,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 添加自定义验证类CustomAccessDecisionManager.java
 
 ```
-
 /**
  * 自定义验证权限
  */
@@ -296,12 +295,27 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
         return true;
     }
 }
-
-
 ```
 
-```
+创建自定义权限实体类CustomGrantedAuthority.java
 
+```
+/**
+ * 自定义权限实体（Spring security）
+ */
+@Data
+public class CustomGrantedAuthority implements GrantedAuthority {
+
+    private String url;
+    private Integer method;
+    private String authority;
+
+
+    @Override
+    public String getAuthority() {
+        return this.url + ";" + MethodEnum.getNameByCode(this.method);
+    }
+}
 ```
 
 
