@@ -158,21 +158,13 @@ public class CorsFilter extends ZuulFilter {
 
 account微服务的接口前提：
 
-GET /account/user/username/{username}} 为根据用户名获取当前用户信息
-
-GET /account/menu/user/{id} 为根据用户id获取当前用户权限菜单
-
-POST /account/password/check 为根据输入密码和加密密码进行对比
-
-GET /account/token/{token} 为根据token，获取当前用户
-
-POST /account/token 为保存token和用户信息
-
-POST /account/token/check/{token} 为检测token是否存在
-
-DELETE /account/token/{token} 删除token
-
-
+* GET /account/user/username/{username} 为根据用户名获取当前用户信息
+* GET /account/menu/user/{id} 为根据用户id获取当前用户权限菜单
+* POST /account/password/check 为根据输入密码和加密密码进行对比
+* GET /account/token/{token} 为根据token，获取当前用户
+* POST /account/token 为保存token和用户信息
+* POST /account/token/check/{token} 为检测token是否存在
+* DELETE /account/token/{token} 删除token
 
 1.添加依赖pom.xml
 
