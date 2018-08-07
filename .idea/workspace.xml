@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="REF DEV Service">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DEV-Service/Linux-Command/Linux-Command.md" beforeDir="false" afterPath="$PROJECT_DIR$/DEV-Service/Linux-Command/Linux-Command.md" afterDir="false" />
-    </list>
+    <list default="true" id="90322d86-0591-4e53-8954-9666541e4040" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -491,11 +488,18 @@
       <option name="project" value="LOCAL" />
       <updated>1533526350442</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="test">
+      <created>1533632016067</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1533632016067</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9625000" />
+    <option name="totallyTimeSpent" value="9983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -563,7 +567,8 @@
     <MESSAGE value="task#125&amp;129 [utech-kb] [DEV] desc: ADD" />
     <MESSAGE value="ADD DEV Service" />
     <MESSAGE value="REF DEV Service" />
-    <option name="LAST_COMMIT_MESSAGE" value="REF DEV Service" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/api/travelport.md">
