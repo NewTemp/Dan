@@ -176,7 +176,7 @@ account微服务的接口前提：
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>        
+        </dependency>
 ```
 
 2.添加配置
@@ -184,95 +184,77 @@ account微服务的接口前提：
 创建全局权限类：WebSecurityConfig.java
 
 ```
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    }
+    
+    /**
+    *不添加权限的url过滤请求，其中开启swagger
+    **/
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring()
+                .antMatchers(HttpMethod.POST, "/login", "/logout")
+                .antMatchers("/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**")
+                .antMatchers("/actuator/**");
+
+    }
+
+
+    @Autowired
+    CorsControllerFilter corsControllerFilter;
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //配置customAccessDecisionManager
+        http.authorizeRequests()
+                //.requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                .anyRequest().authenticated()
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
+                        fsi.setAccessDecisionManager(customAccessDecisionManager());
+                        return fsi;
+                    }
+                });
+        //替换传统的session，用token代替
+        http.securityContext().securityContextRepository(tokenSecurityContextRepository());
+        //异常信息处理
+        http.exceptionHandling()//
+                .authenticationEntryPoint(goAuthenticationEntryPoint())
+                .accessDeniedHandler(goAccessDeniedHandler());
+        //关闭csrf
+        http.csrf().disable();
+        http.addFilterBefore(corsControllerFilter, SecurityContextPersistenceFilter.class);
+        // http.addFilterBefore()
+    }
+
+    @Bean
+    public AccessDecisionManager customAccessDecisionManager() {
+        return new CustomAccessDecisionManager();
+    }
+
+    @Bean
+    public GoAuthenticationEntryPoint goAuthenticationEntryPoint() {
+        return new GoAuthenticationEntryPoint();
+    }
+
+    @Bean
+    public GoAccessDeniedHandler goAccessDeniedHandler() {
+        return new GoAccessDeniedHandler();
+    }
+
+    @Bean
+    public TokenSecurityContextRepository tokenSecurityContextRepository() {
+        return new TokenSecurityContextRepository();
+    }
+
+}
 
-dependency
->
 
-
-<
-groupId
->
-org.springframework.cloud
-<
-/groupId
->
-
-
-<
-artifactId
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->
-spring-cloud-starter-security
-<
-/artifactId
->
-
-
-<
-/dependency
->
 ```
 
 
