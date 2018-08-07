@@ -154,7 +154,7 @@ public class CorsFilter extends ZuulFilter {
 
 ##### 五、网关权限
 
-核心框架为Spring Cloud security。所有微服务经过网关zuul，进行权限控制。
+核心框架为Spring Cloud security。所有微服务经过网关zuul，进行权限控制，其中包括登陆和注销。
 
 account微服务的接口前提：
 
@@ -614,6 +614,4 @@ public interface AccountFeignClient {
 3.测试
 
 首先登陆localhost:8040/login，获取当前token，再去访问account微服务。![](/assets/login.jpg)![](/assets/auth.jpg)
-
-
 
