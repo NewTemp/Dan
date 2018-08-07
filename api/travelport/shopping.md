@@ -148,14 +148,16 @@
 
   * 例如：                                                                                                                                                                                                                   SSR Type="DOCO" HK1//V/9891404/LONDON/14MAR07/USA-1SMITH/JOHNMR Carrier="BA"                                                                   /V/指定簽證作為備份文件，倫敦是簽發地，DDMMMYY是簽發時間。                                                                                                                                                       一些供應商對DOCO數據有不同的要求。<br/>
   
-  | 提供商 | 出生地 | 簽證號碼 | 簽發地點 | 發行日期 | 簽證適用國家 | 乘客姓名 | 截止日期 |
+| 提供商 | 出生地 | 簽證號碼 | 簽發地點 | 發行日期 | 簽證適用國家 | 乘客姓名 | 截止日期 |
 | --- | --- | --- | --- |--- |--- |--- |--- |
 |Galileo|No|Yes|Yes|Yes|Yes|No|No|
 |ACH|No|No|No|No|No|No|Yes|
 * ### SSR Status Codes
 SSR有狀態碼來比搜啊會它們在執行過程中的狀態。例如：<br/>
-SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"<br/>|Status Code|Description|
-|--|---|
+SSR Type="DOCS" Status="HK" Carrier="YY" FreeText="P/US/1234567/US/25Jan85/M/23OCT17/Lastname/Firstname"<br/>
+
+|Status Code|Description|
+|---|----|
 |NN|SSR已經被請求|
 |PN|SSR還待確認|
 |UN|供應商（承運人）不能滿足要求。在這種情況下，SSR將保留在PNR中作為該讀物被請求和拒絕的證據|
