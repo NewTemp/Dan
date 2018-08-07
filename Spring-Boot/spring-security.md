@@ -215,3 +215,13 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
 
 6-关闭spring security crsf protection默认的http 403 access denied处理方式\(或者叫防范CSRF跨站请求伪造攻击\)
 
+### 四.参考资料
+
+整体流程图:
+
+![](/assets/springsecurity.png)
+
+
+
+
+
