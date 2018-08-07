@@ -85,6 +85,10 @@ zuul:
 
 3.测试
 
+用浏览器访问localhost:8040/account/test，如果能访问account服务的请求，则为成功。
+
+
+
 网关zuul服务和account服务注册到eureka，如下图：
 
 ![](/assets/QQ截图20180807170054.jpg)
