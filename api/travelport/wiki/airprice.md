@@ -18,11 +18,21 @@ Required：僅返回可以通過電子票務發送的行程。
 
 Ticketless：票務不適用於此運營商/解決方案。
 
-
-
 ## FaresIndicator\(票價制定返回類型\)
 
-PublicFaresOnly , PrivateFaresOnly , AgencyPrivateFaresOnly , AirlinePrivateFaresOnly , PublicAndPrivateFares , NetFaresOnly , AllFares
+PublicFaresOnly
+
+PrivateFaresOnly
+
+AgencyPrivateFaresOnly
+
+AirlinePrivateFaresOnly
+
+PublicAndPrivateFares
+
+NetFaresOnly
+
+AllFares
 
 ---
 
