@@ -8,11 +8,5 @@
 
 1.添加依赖
 
-_`<dependency>`_
 
-<groupId>org.springframework.cloud</groupId>
-
-<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-
-</dependency>`_
 
