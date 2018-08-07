@@ -97,11 +97,11 @@ zuul:
 
 ##### 转发过滤器前，在HttpServletResponse添加跨域头
 
-1.创建PreFilter.java
+1.创建CorsFilter .java
 
 ```
 @Component
-public class PreFilter extends ZuulFilter {
+public class CorsFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
@@ -135,6 +135,47 @@ public class PreFilter extends ZuulFilter {
 ```
 
 2.启动类ZuulApplication.java，添加如下
+
+```
+    @Bean
+    public CorsFilter corsFilter(){
+        return new CorsFilter();
+    }
+```
+
+3.测试
+
+重新启动，即可解决跨域问题。
+
+4.注意
+
+如果zuul
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
