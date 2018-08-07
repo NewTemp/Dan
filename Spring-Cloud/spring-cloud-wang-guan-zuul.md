@@ -408,7 +408,8 @@ public class TokenSecurityContextRepository implements SecurityContextRepository
             authority.setUrl(menuAuth.getUrl());
             authorities.add(authority);
         }
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null, authorities);
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user, null,
+             authorities);
         return new SecurityContextImpl(authentication);
     }
 
@@ -420,7 +421,8 @@ public class TokenSecurityContextRepository implements SecurityContextRepository
      * @param httpServletResponse
      */
     @Override
-    public void saveContext(SecurityContext securityContext, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public void saveContext(SecurityContext securityContext, HttpServletRequest httpServletRequest, 
+        HttpServletResponse httpServletResponse) {
     }
 
     /**
@@ -448,7 +450,54 @@ public class TokenSecurityContextRepository implements SecurityContextRepository
         return SecurityContextHolder.createEmptyContext();
     }
 }
+```
 
+创建自定义创建返回异常权限类和未登录类GoAccessDeniedHandler.java和GoAuthenticationEntryPoint.java
+
+```
+/**
+ * 授权异常，返回信息
+ * 未登录，会返回
+ */
+@Component
+public class GoAuthenticationEntryPoint implements AuthenticationEntryPoint {
+    @Autowired
+    MessageService messageService;
+
+    @Override
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException exception) throws IOException {
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+        SigmaResponse<String> sigmaResponse = new SigmaResponse<>();
+        sigmaResponse.setHeader(new SigmaResponseHeader("-1", messageService.getMessage("nologin.error.message", 
+            request), null));
+        response.getWriter().print(new ObjectMapper().writeValueAsString(sigmaResponse));
+        response.getWriter().flush();
+    }
+}
+```
+
+```
+/**
+ * 权限异常，返回信息
+ * 无菜单权限，跨角色的权限操作会报进入此类
+ */
+@Component
+public class GoAccessDeniedHandler implements AccessDeniedHandler {
+    @Autowired
+    MessageService messageService;
+
+    @Override
+    public void handle(HttpServletRequest request, HttpServletResponse response,
+                       AccessDeniedException exception) throws IOException {
+        response.setHeader("Content-Type", "application/json;charset=utf-8");
+        SigmaResponse<String> sigmaResponse = new SigmaResponse<>();
+        sigmaResponse.setHeader(new SigmaResponseHeader("-2", 
+            messageService.getMessage("denied.error.message", request), null));
+        response.getWriter().print(new ObjectMapper().writeValueAsString(sigmaResponse));
+        response.getWriter().flush();
+    }
+}
 ```
 
 
