@@ -85,7 +85,7 @@ zuul:
 
 3.测试
 
-用浏览器访问localhost:8040/account/test，如果通过zuul路由，能访问account服务的请求，则为成功。
+用浏览器访问localhost:8040/account/test，如果通过zuul路由，能访问account服务（端口是9090）的请求，则为成功。
 
 网关zuul服务和account服务注册到eureka，如下图：
 
