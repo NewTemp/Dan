@@ -1,3 +1,5 @@
+# Request:
+
 # **TypeInventoryRequest\(機票庫存查詢類型\)**
 
 Seamless：将在预订尝试之前轮询参与1P无缝库存的运营商以确认库存。
