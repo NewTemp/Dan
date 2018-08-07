@@ -176,10 +176,15 @@ account微服务的接口前提：
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
+        </dependency>        
 ```
 
+2.添加配置
+
+创建全局权限类：WebSecurityConfig.java
+
 ```
+
 dependency
 >
 
