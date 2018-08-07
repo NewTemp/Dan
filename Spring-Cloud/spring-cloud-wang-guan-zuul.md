@@ -42,7 +42,7 @@ public class ZuulApplication {
 
 4.测试
 
-用浏览器访问localhost:8040，即可测试是否开启。
+用浏览器访问localhost:8040，即可测试是否启动项目。
 
 三、服务化
 
