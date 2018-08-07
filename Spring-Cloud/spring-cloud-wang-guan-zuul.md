@@ -158,5 +158,44 @@ public class CorsFilter extends ZuulFilter {
 
 1.添加依赖pom.xml
 
+```
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+```
+
+```
+dependency
+>
+
+
+<
+groupId
+>
+org.springframework.cloud
+<
+/groupId
+>
+
+
+<
+artifactId
+>
+spring-cloud-starter-security
+<
+/artifactId
+>
+
+
+<
+/dependency
+>
+```
+
 
 
