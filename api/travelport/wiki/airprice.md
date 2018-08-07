@@ -35,9 +35,7 @@ Ticketless：票務不適用於此運營商/解決方案。
   * #### FareInfo
   * * PrivateFare
 
-    對應得類型：
-
-    UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
+    對應得類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
 
   * * 
 
