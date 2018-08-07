@@ -156,6 +156,8 @@ public class CorsFilter extends ZuulFilter {
 
 核心框架为Spring Cloud security。所有微服务经过网关zuul，进行权限控制。
 
+前提：
+
 1.添加依赖pom.xml
 
 ```
