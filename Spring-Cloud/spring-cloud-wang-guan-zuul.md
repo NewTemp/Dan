@@ -48,6 +48,11 @@ public class ZuulApplication {
 
 ##### Zuul注册到eureka server，通过url的映射转化为服务名ServiceId进行映射。
 
+前提：
+
+* 开启eureka，端口号为8761
+* 开启微服务account，并注册到eureka
+
 1.添加依赖pom.xml
 
 添加组建服务eureka注册、发现
