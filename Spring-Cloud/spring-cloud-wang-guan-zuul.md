@@ -297,7 +297,7 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
 }
 ```
 
-创建自定义权限实体类CustomGrantedAuthority.java
+创建自定义权限实体类CustomGrantedAuthority.java，自定义权限url
 
 ```
 /**
