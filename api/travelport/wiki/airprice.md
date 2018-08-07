@@ -38,7 +38,5 @@ Ticketless：票務不適用於此運營商/解決方案。
 
       對應得類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
 
-    * * 
-
 
 
