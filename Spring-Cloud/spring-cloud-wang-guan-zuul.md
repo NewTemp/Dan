@@ -190,7 +190,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
     }
-    
+
     /**
     *不添加权限的url过滤请求，其中开启swagger
     **/
@@ -201,12 +201,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/swagger-ui.html", "/webjars/**", "/v2/**", "/swagger-resources/**")
                 .antMatchers("/actuator/**");
 
-    }
-
-
-    @Autowired
-    CorsControllerFilter corsControllerFilter;
-
+    }    
+    /**
+    *security基础配置
+    **/
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //配置customAccessDecisionManager
@@ -228,8 +226,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(goAccessDeniedHandler());
         //关闭csrf
         http.csrf().disable();
-        http.addFilterBefore(corsControllerFilter, SecurityContextPersistenceFilter.class);
-        // http.addFilterBefore()
     }
 
     @Bean
@@ -253,8 +249,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
-
-
 ```
 
 
