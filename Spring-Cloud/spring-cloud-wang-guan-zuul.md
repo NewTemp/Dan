@@ -1,4 +1,4 @@
-##### 一、简单介绍
+##### **一、简单介绍**
 
 ##### Spring Cloud Zuul路由是微服务框架的不可或缺的一部分，提供动态路由，监控，弹性，安全等的边缘服务。Zuul是Netflix出品的一个基于JVM路由的服务端的负载均衡器。
 
@@ -8,7 +8,7 @@
 
 1.添加依赖
 
-```
+```java
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
