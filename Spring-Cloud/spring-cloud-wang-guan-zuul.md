@@ -105,17 +105,17 @@ public class CorsFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-        return "pre";
+        return "pre"; // 可以在请求被路由之前调用
     }
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 0;// filter执行顺序，通过数字指定 ,优先级为0，数字越大，优先级越低
     }
 
     @Override
     public boolean shouldFilter() {
-        return true;
+        return true;// 是否执行该过滤器，此处为true，说明需要过滤
     }
 
     @Override
@@ -149,7 +149,7 @@ public class CorsFilter extends ZuulFilter {
 
 4.注意
 
-* 如果zuul配置了cors跨域问题，则不能在微服务下面在配置cors跨域，不然会出现各种问题。
+* 如果zuul配置了cors跨域问题，则不能在微服务下面在配置cors跨域，不然会继续存在跨域问题。
 * Filter是Zuul的核心，用来实现对外服务的控制。Filter的生命周期有4个，分别是“pre”、“routing”、“post”、“error”。具体请看教程：[springcloud\(十一\)：服务网关Zuul高级篇](https://blog.csdn.net/u011820505/article/details/79373594)
 
 
