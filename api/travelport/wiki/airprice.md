@@ -21,8 +21,7 @@ Ticketless：票務不適用於此運營商/解決方案。
 ## **AirPricingSolution**\(機票價格方案\)
 
 * ### **AirPricingInfo**
-
-              &lt;PricingMethod&gt;
+* ### PricingMethod
 
 #### 
 
