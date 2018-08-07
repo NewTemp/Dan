@@ -145,7 +145,7 @@ public class CorsFilter extends ZuulFilter {
 
 3.测试
 
-重新启动，即可解决跨域问题。
+重新启动，即可解决跨域问题。![](/assets/cors.png)
 
 4.注意
 
