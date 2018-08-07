@@ -26,16 +26,17 @@ Ticketless：票務不適用於此運營商/解決方案。
 
 * ### AirPricingInfo
 
-  * * #### PricingMethod
+* * #### PricingMethod
 
     對應傳參有以下種類：
 
     Auto , Manual , ManualFare , Guaranteed , Invalid , Restored , Ticketed , Unticketable , Reprice , Expired , AutoUsingPrivateFare , GuaranteedUsingAirlinePrivateFare , Airline , AgentAssisted , VerifyPrice , AltSegmentRemovedReprice , AuxiliarySegmentRemovedReprice , DuplicateSegmentRemovedReprice , Unknown , GuaranteedUsingAgencyPrivateFare , AutoRapidReprice
 
-    * #### PricingType
-    * #### FareInfo
-    * * PrivateFare
+    #### PricingType
 
+    #### FareInfo
+
+    * PrivateFare
       對應得類型：UnknownType , PrivateFare , AgencyPrivateFare , AirlinePrivateFare
 
 
