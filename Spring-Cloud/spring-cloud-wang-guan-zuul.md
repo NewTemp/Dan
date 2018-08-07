@@ -584,7 +584,6 @@ public class LoginController {
 创建Feign请求类：AccountFeignClient.java，用于访问account微服务
 
 ```
-
 @FeignClient("account")
 public interface AccountFeignClient {
     //登陆验证
@@ -614,7 +613,7 @@ public interface AccountFeignClient {
 
 3.测试
 
-首先登陆localhost:8040/login，获取当前token，再去访问account微服务。
+首先登陆localhost:8040/login，获取当前token，再去访问account微服务。![](/assets/login.jpg)![](/assets/auth.jpg)
 
 
 
