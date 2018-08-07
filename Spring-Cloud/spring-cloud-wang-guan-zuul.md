@@ -6,7 +6,7 @@
 
 ##### **本项目基于Springboot2.0.3和Spring Cloud Finchley进行部署。**
 
-1.添加依赖
+1.添加依赖pom.xml
 
 ```java
         <dependency>
@@ -14,6 +14,37 @@
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
 ```
+
+2.配置文件application.yml
+
+```
+spring:
+  application:
+    name: zuul
+server:
+  port: 8040
+```
+
+3.启动类ZuulApplication.java
+
+启动类添加@EnableZuulProxy，即可支持网关路由
+
+```
+@EnableZuulProxy
+@SpringBootApplication
+public class ZuulApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(ZuulApplication.class, args);
+    }
+
+}
+```
+
+4.测试
+
+用浏览器访问localhost:8040，即可测试是否开启。
+
+
 
 
 
