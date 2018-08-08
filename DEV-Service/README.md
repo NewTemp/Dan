@@ -14,17 +14,17 @@
                         <td>pwd</td>
                     </tr>
                     <tr>
-                        <td rowspan="5">172.18.21.216<br/>172.18.21.217<br/>172.18.21.218<br/></td>
+                        <td rowspan="4">172.18.21.216<br/>172.18.21.217<br/>172.18.21.218<br/></td>
                         <td>Redis</td>
                         <td>7301-7306</td>
                         <td>/</td>
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td>MySql</td>
-                        <td>3306</td>
-                        <td>root</td>
-                        <td>Utech2018</td>
+                        <td >MySql</td>
+                        <td >3306</td>
+                        <td >root</td>
+                        <td >Utech2018</td>
                     </tr><tr>
                         <td>utech</td>
                         <td>Utech2018</td>
@@ -50,7 +50,7 @@
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td rowspan="2" style="line-height: 56px">172.18.21.221</td>
+                        <td rowspan="2">172.18.21.221</td>
                         <td>Zookeeper</td>
                         <td>2181-2183</td>
                         <td>/</td>
@@ -63,7 +63,7 @@
                         <td>hello</td>
                     </tr>
                     <tr>
-                        <td rowspan="4" style="line-height: 63px" >172.18.21.222<br/>172.18.21.223<br/></td>
+                        <td rowspan="4" >172.18.21.222<br/>172.18.21.223<br/></td>
                         <td>ElasticSearch</td>
                         <td>9200,9201</td>
                         <td>/</td>
@@ -88,7 +88,7 @@
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td rowspan="2" style="line-height: 56px">172.18.21.224</td>
+                        <td rowspan="2">172.18.21.224</td>
                         <td>Nexus3</td>
                         <td>8081</td>
                         <td>/</td>
@@ -97,11 +97,11 @@
                     <tr>
                         <td>NMP</td>
                         <td>/</td>
-                        <td>/</td>
+                        <td>/</t    d>
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td rowspan="2" style="line-height: 56px">172.18.21.225</td>
+                        <td rowspan="2">172.18.21.225</td>
                         <td>Jenkins</td>
                         <td>/</td>
                         <td>admin</td>
