@@ -2,8 +2,6 @@
 
 * #### 機器列表
 
-  ![機器列表](/assets/service.png)    
-
 <table>
                     <tbody>
                     <tr>
@@ -77,13 +75,13 @@
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td>Grafana</td>
+                        <td>Grafana(223)</td>
                         <td>3000</td>
                         <td>admin</td>
                         <td>admin</td>
                     </tr>
                     <tr>
-                        <td>Kibana</td>
+                        <td>Kibana(222)</td>
                         <td>5601</td>
                         <td>/</td>
                         <td>/</td>
