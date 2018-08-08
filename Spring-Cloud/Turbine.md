@@ -42,7 +42,7 @@ server:
 
 ## 服务实例
 
-通过访问服务的/actuator/hystrix.stream接口来实现监控，需要服务实例添加这个 endpoint。
+通过访问服务的/actuator/hystrix.stream接口来实现监控，需要服务实例添加这个endpoint。
 
 添加依赖
 
@@ -73,3 +73,78 @@ management:
       exposure:
         include: hystrix.stream
 ```
+
+访问 Hystrix Dashboard 并开启对 http://localhost:9000/actuator/hystrix.stream 的监控，就可以看到该服务的监控信息。
+
+# 二、Turbine应用
+
+单独的使用Hystrix Dashboard只能监控单一服务，想要监控多个服务的话得结合turbine一块使用，Hystrix Dashboard通过监控turbine获取到所有服务的聚合监控数据。
+
+## Http收集监控信息
+
+创建SpringBoot工程，SpringBoot版本2.0.3.RELEASE，SpringCloud版本Finchley.RELEASE
+
+添加依赖
+
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+</dependency>
+```
+
+启动类
+
+```
+@EnableTurbine
+@SpringBootApplication
+public class TurbineApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TurbineApplication.class, args);
+    }
+}
+```
+
+配置文件
+
+需要将turbine注册到服务注册中心
+
+```
+spring:
+  application:
+    name: turbine
+server:
+  port: 8080
+management:
+  port: 8081
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7000/eureka/
+turbine:
+  app-config: consumer,consumer1
+  cluster-name-expression: new String("default")
+  combine-host-port: true
+```
+
+参数说明
+
+* turbine.app-config参数指定了需要收集监控信息的服务名，多个使用逗号分隔
+* turbine.cluster-name-expression 参数指定了集群名称为 default，当我们服务数量非常多的时候，可以启动多个 Turbine 服务来构建不同的聚合集群，而该参数可以用来区分这些不同的聚合集群，同时该参数值可以在 Hystrix 仪表盘中用来定位不同的聚合集群，只需要在 Hystrix Stream 的 URL 中通过 cluster 参数来指定；
+* turbine.combine-host-port参数设置为true，可以让同一主机上的服务通过主机名与端口号的组合来进行区分，默认情况下会以 host 来区分不同的服务，这会使得在本地调试的时候，本机上的不同服务聚合成一个服务来统计。
+
+访问 Hystrix Dashboard 并开启对 http://localhost:8081/actuator/hystrix.stream 的监控，就可以看到所有服务的监控信息。
+
+## 消息代理收集监控信息
+
+TODO
+
+
+示例：http://gitlab.utech.com/Vick.Zeng/spring-cloud-demo.git
+
+# 三、参考
+
+[Spring Cloud（五）：Hystrix 监控面板](https://windmt.com/2018/04/16/spring-cloud-5-hystrix-dashboard/)
+
+[Spring Cloud（六）：Hystrix 监控数据聚合 Turbine](https://windmt.com/2018/04/17/spring-cloud-6-turbine/)
