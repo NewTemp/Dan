@@ -21,11 +21,12 @@
                         <td>/</td>
                     </tr>
                     <tr>
-                        <td >MySql</td>
-                        <td >3306</td>
+                        <td rowspan="2">MySql</td>
+                        <td rowspan="2">3306</td>
                         <td >root</td>
                         <td >Utech2018</td>
-                    </tr><tr>
+                    </tr>
+                    <tr>
                         <td>utech</td>
                         <td>Utech2018</td>
                     </tr>
