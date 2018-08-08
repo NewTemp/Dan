@@ -24,6 +24,7 @@
 
 * [Spring Boot](Spring-Boot/README.md)
   * [Spring boot 注解](Spring-Boot/Spring-boot注解.md)
+  * [Spring Security使用](Spring-Boot/spring-security.md)
 
 ## Spring Cloud
 
