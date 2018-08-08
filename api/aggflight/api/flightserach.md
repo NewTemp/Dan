@@ -24,7 +24,7 @@
 
 | 名称 | 类型 | 是否必填 | 描述 |
 | ---: | :--- | :---: | :--- |
-| traceId | String | Y | 跟踪号 |
+| requestKey | String | Y | 如果轮询时，可以这么使用。 |
 | code | String | Y | 代码。0：表示从Redis获取数据成功；1：表示Redis没有数据，需要轮训。其他表示各种错误。 |
 | message | String | Y | 消息 |
 | apiType | Enum | Y | api类型，目前为Trp。 |
@@ -37,6 +37,7 @@
 * 如果没有，则返回1；
   * 发起一个线程，call travelport-ms；
   * 将查询结果写入REDIS；
+* 如果Error，则返回其他状态；
 
 
 
