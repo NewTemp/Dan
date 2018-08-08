@@ -12,7 +12,7 @@ Id: Universal API/uAPI6048797814-85980c20
 Pw: 6Fw}{2BnYg
 ```
 
-Target Branch\(P7053841\):
+Target Branch:
 
 * P7053841 \(PCC 7X6F\)
 * P7056884 \(PCC 7JZ3\)
