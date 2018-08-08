@@ -168,7 +168,7 @@ http.authorizeRequests()
                 .tokenValiditySeconds(604800);//记住我的时间/秒
 ```
 
-自定义CustomAccessDecisionManager类实现AccessDecisionManager接口,进行权限的验证:从SecurityContext中取出之前保存的Authentication对象,然后比较访问路径的权限和Authentication对象中的权限大小,判断是否能访问此路径.
+自定义CustomAccessDecisionManager类实现AccessDecisionManager接口,进行权限的验证:从SecurityContext中取出之前保存的Authentication对象,然后比较访问路径的权限和Authentication对象中的权限大小.无权限访问时,则返回拒绝信息.
 
 ```
 **
@@ -215,13 +215,51 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
 
 6-关闭spring security crsf protection默认的http 403 access denied处理方式\(或者叫防范CSRF跨站请求伪造攻击\)
 
-### 四.参考资料
+### 四.问题及解决
+
+##### 1.跨域问题
+
+   1.1问题的产生:
+
+         通常我们测试的方法是通过Swagger发起http请求,查看返回信息,这样并不能察觉到跨域问题.但实际上由于我们是前后端分离系统,如果通过页面发起ajax请求就会发现问题.
+
+    1.2问题的解决:
+
+         增加CROS设置.CORS是一个W3C标准,全称是”跨域资源共享”（Cross-origin resource sharing\).它允许浏览器向跨源服务器,发出       XMLHttpRequest请求,从而克服了AJAX只能同源使用的限制.增加自定义的Filter:
+
+```
+@Component
+public class CorsControllerFilter extends OncePerRequestFilter {
+
+    @Override
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws ServletException, IOException {
+        HttpServletResponse res = (HttpServletResponse) response;
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE ,PUT");
+        res.setHeader("Access-Control-Max-Age", "3600");
+        res.setHeader("Access-Control-Allow-Headers", "Origin, No-Cache, X-Requested-With, If-Modified-Since,"
+                + " Pragma, Last-Modified, Cache-Control, Expires, Content-Type, "
+                + "X-E4M-With,userId,token,Authorization,deviceId,Access-Control-Allow-Origin,Access-Control-Allow-Headers,Access-Control-Allow-Methods");
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+        chain.doFilter(request, response);
+    }
+}
+```
+
+由于非简单请求会发起一个OPTIONS方法的预检请求,而我们用了Spring Security拦截所有请求,只开放部分请求,所以在WebSecurityConfig 中配置时,需要把自定义的CorsCOntrollerFilter加在Security拦截器之前,避免拦截冲突.
+
+```
+ http.addFilterBefore(corsControllerFilter, SecurityContextPersistenceFilter.class);
+```
+
+    
+
+         
+
+### 五.参考资料
 
 整体流程图:
 
 ![](/assets/springsecurity.png)
-
-
-
-
 
