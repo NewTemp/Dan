@@ -1,6 +1,10 @@
 # Summary
 
+## 一堆规范
+
 * [Introduction](README.md)
+* [项目搭建合规指引](xiang-mu-da-jian-he-gui-zhi-yin.md)
+  * [集成Eureka](xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-eureka.md)
 
 ## API
 
