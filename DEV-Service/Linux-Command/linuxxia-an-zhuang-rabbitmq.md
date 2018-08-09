@@ -1,6 +1,8 @@
-## Linux系统中安装RabbitMQ
+# RabbitMQ安装及使用
 
-#### 由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
+### 一.Linux系统中安装RabbitMQ
+
+由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
 
 ###### 单机版
 
@@ -86,6 +88,214 @@ service iptables stop
 添加用户:rabbitmqctl add_user admin admin
 添加权限:rabbitmqctl set_permissions -p "/" admin ".*" ".*" ".*"
 修改用户角色:rabbitmqctl set_user_tags admin administrator
+```
+
+### 二.RabbitMQ使用
+
+1.订阅模式
+
+当多个队列与交换机绑定时,消息的生产者生产消息并传递到交换机,交换机根据binding把消息传递给所有绑定的队列.如果队列下面有多个消息的消费者,则会轮询消费消息.队列采用的是匿名队列,匿名队列会随机产生一个队列名,并且消费者如果不存在以后,队列也会自动消失.
+
+```
+/**
+ * rabbitmq 配置类
+ * */
+@Configuration
+public class RabbitMQConfig {
+    //得到一个发布订阅的交换机
+    @Bean
+    public FanoutExchange getFanoutExchange() {
+        return new FanoutExchange("fanoutexchange");
+    }
+
+    //得到三个队列
+    @Bean
+    public Queue createQueue1(){
+        return new AnonymousQueue();
+    }
+
+    @Bean
+    public Queue createQueue2() {
+        return new AnonymousQueue();
+    }
+    @Bean
+    public Queue createQueue3() {
+        return new AnonymousQueue();
+    }
+
+    //绑定队列和交换机
+    @Bean
+    public Binding getBinding1(Queue createQueue1,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(createQueue1).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding getBinding2(Queue createQueue2, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(createQueue2).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding getBinding(Queue createQueue3, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(createQueue3).to(fanoutExchange);
+    }
+
+}
+```
+
+```
+/**
+ * 消息的生产者
+ * */
+@Component
+public class MessageProvider {
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+    @Autowired
+    private FanoutExchange fanoutExchange;
+
+    public void sendMessage(String message){
+        this.amqpTemplate.convertAndSend(fanoutExchange.getName(),null,message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue1.name}")
+public class MessageCustomer {
+
+    @RabbitHandler
+    public void getMessage(String message){
+        System.out.println("第一个信息接收者:"+message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue2.name}")
+public class SecondMessageCustomer {
+    @RabbitHandler
+    public void getMessage(String message) {
+        System.out.println("第二个信息接收者:"+message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue3.name}")
+public class ThirdMessageCustomer {
+    @RabbitHandler
+    public void getMessage(String message) {
+        System.out.println("第三个信息接收者:"+message);
+    }
+}
+```
+
+```
+/**
+ * 测试类
+ * */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RabbitMQTest {
+    @Autowired
+    private MessageProvider messageProvider;
+    @Test
+    public void messageTest() {
+        messageProvider.sendMessage("hello");
+    }
+}
+```
+
+2.点对点模式
+
+队列和交换机绑定产生一个binding.当routing key与binding key完全匹配的时候,消息才会被投递
+
+```
+//点对点模式
+@Bean("directexchange")
+public DirectExchange getDirectExchange() {
+    return new DirectExchange("directexchange");
+}
+@Bean("directqueue")
+public Queue getDirectQueue() {
+    return new Queue("directqueue");
+}
+@Bean
+public Binding getDirectBindingKey(@Qualifier(value = "directqueue") Queue queue,@Qualifier(value = "directexchange") Exchange exchange) {
+    return BindingBuilder.bind(queue).to(exchange).with("direct_key").noargs();
+}
+```
+
+```
+//点对点模式
+public void sendMessageFaceToFace(String message) {
+    this.amqpTemplate.convertAndSend(directExchange.getName(),"direct_key",message);
+}
+```
+
+3.rabbitmq消息的确认机制
+
+\(1\)消息生产者到交换机之间的消息确认:
+
+通过实现ConfirmCallback 接口，消息发送到 Broker 后触发回调，确认消息是否到达 Broker 服务器
+
+\(2\)交换机到队列之间的消息确认:
+
+通过实现ReturnCallbac接口,启动消息失败返回,比如路由不到队列时触发回调
+
+```
+@Component
+public class RabbitTemplateConfig implements RabbitTemplate.ReturnCallback,RabbitTemplate.ConfirmCallback {
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @PostConstruct
+    public void init(){
+        rabbitTemplate.setConfirmCallback(this);
+    }
+
+    @Override
+    public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+        System.out.println("交换机确认信息:唯一标识"+correlationData+",确认结果:"+ack+",失败原因:"+cause);
+    }
+
+    @Override
+    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+        System.out.println("队列收到信息:"+message+",回复消息码:"+replyCode+",回复内容:"+replyText+",交换机:"+exchange+",路由键:"+routingKey);
+    }
+}
+```
+
+\(3\)队列和消费者之间的消息确认:
+
+默认情况是,消费者收到消息,队列就删除这条消息,无论消费者是否正确处理这条消息.为了保证数据不被丢失，RabbitMQ支持消息确认机制，即ack.当消费者正确处理完消息以后,才通知队列删除相应的消息,而不是一收到消息就立即通知队列删除消息.
+
+ack的模式有三种:
+
+```
+AcknowledgeMode.NONE：自动确认
+AcknowledgeMode.AUTO：根据情况确认
+AcknowledgeMode.MANUAL：手动确认
+```
+
+```
+@Component
+@RabbitListener(queues = "directqueue")
+public class AckMessageCustomer {
+
+    @RabbitHandler
+    public void processMessage2(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+        System.out.println(message);
+        try {
+            channel.basicAck(tag, false);
+        } catch (IOException e) {
+            channel.basicNack(tag,false,true);
+        }
+    }
+}
 ```
 
 
