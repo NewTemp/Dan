@@ -36,7 +36,7 @@ AllFares
 
 ---
 
-# Respone
+# Response
 
 ## AirPricingSolution
 
