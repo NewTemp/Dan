@@ -1,6 +1,8 @@
-## Linux系统中安装RabbitMQ
+# RabbitMQ安装及使用
 
-#### 由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
+### 一.Linux系统中安装RabbitMQ
+
+由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
 
 ###### 单机版
 
@@ -87,6 +89,8 @@ service iptables stop
 添加权限:rabbitmqctl set_permissions -p "/" admin ".*" ".*" ".*"
 修改用户角色:rabbitmqctl set_user_tags admin administrator
 ```
+
+### 二.RabbitMQ使用
 
 
 
