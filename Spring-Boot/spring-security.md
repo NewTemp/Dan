@@ -72,6 +72,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 }
 ```
 
+整体执行顺序:
+
+首先SecurityContextPersistenceFilter会拦截请求,把页面参数封装成Authentication对象.然后UserNamePasswordAuthenticationFilter会调用FilterSecurityInterceptor,FilterSecurityInterceptor会持有AuthenticationManager对象,而AuthenticationManager会持有AuthenticationProvider对象,AuthenticationProvider对象会从之前封装好的Authentication对象获取信息,进行用户验证.
+
 图中数字的解释:
 
 1-开启SpringSecurity服务
@@ -221,11 +225,11 @@ public class CustomAccessDecisionManager implements AccessDecisionManager {
 
 1.1问题的产生:
 
- 通常我们测试的方法是通过Swagger发起http请求,查看返回信息,这样并不能察觉到跨域问题.但实际上由于我们是前后端分离系统,如果通过页面发起ajax请求就会发现问题.
+通常我们测试的方法是通过Swagger发起http请求,查看返回信息,这样并不能察觉到跨域问题.但实际上由于我们是前后端分离系统,如果通过页面发起ajax请求就会发现问题.
 
 1.2问题的解决:
 
- 增加CROS设置.CORS是一个W3C标准,全称是”跨域资源共享”（Cross-origin resource sharing\\\).它允许浏览器向跨源服务器,发出       XMLHttpRequest请求,从而克服了AJAX只能同源使用的限制.增加自定义的Filter:
+增加CROS设置.CORS是一个W3C标准,全称是”跨域资源共享”（Cross-origin resource sharing\\).它允许浏览器向跨源服务器,发出       XMLHttpRequest请求,从而克服了AJAX只能同源使用的限制.增加自定义的Filter:
 
 ```
 @Component
@@ -255,7 +259,11 @@ public class CorsControllerFilter extends OncePerRequestFilter {
 
 ### 五.参考资料
 
-整体流程图:
+1.整体流程图:
 
-![](/assets/springsecurity.png)
+![](/assets/springsecurity.png)2.SpringSecurity内部filter调用顺序
+
+![](/assets/SpringSecurityFilter执行顺序.png)
+
+
 
