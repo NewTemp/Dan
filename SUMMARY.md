@@ -5,6 +5,7 @@
 * [Introduction](README.md)
 * [项目搭建合规指引](xiang-mu-da-jian-he-gui-zhi-yin.md)
   * [集成Eureka](xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-eureka.md)
+  * [GIT提交规范](xiang-mu-da-jian-he-gui-zhi-yin/gitti-jiao-gui-fan.md)
 
 ## API
 
@@ -47,3 +48,4 @@
   * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
   * [Spring Cloud 网关Zuul](Spring-Cloud/spring-cloud-wang-guan-zuul.md)
   * [Spring Cloud 服务实时监控Hystrix Dashboar、Turbine](Spring-Cloud/Turbine.md)
+
