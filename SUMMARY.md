@@ -35,6 +35,7 @@
 * [DEV Service](DEV-Service/README.md)
   * [Linux Command](DEV-Service/Linux-Command/Linux-Command.md)
   * [Service Building](DEV-Service/Service-Building/README.md)
+  * [Linux下安装RabbitMQ](DEV-Service/Linux-Command/linuxxia-an-zhuang-rabbitmq.md)
 
 ## Spring Boot
 
