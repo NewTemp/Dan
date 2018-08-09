@@ -1,6 +1,8 @@
-### Linux系统中安装RabbitMQ
+## Linux系统中安装RabbitMQ
 
-##### 由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
+#### 由于RabbitMQ依赖于Erlang,所以先要在机器上安装Erlang环境
+
+###### 单机版
 
 1.安装GCC GCC-C++ Openssl等模块
 
@@ -29,7 +31,7 @@ make install
 4.下载rabbitmq-server-3.6.9.tar.xz
 
 ```
-wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-generic-unix-3.6.9.tar.xz    
+wget http://www.rabbitmq.com/releases/rabbitmq-server/v3.6.9/rabbitmq-server-generic-unix-3.6.9.tar.xz
 ```
 
 5.对于下载xz包进行解压，首先先下载xz压缩工具
@@ -55,7 +57,6 @@ cp -r rabbitmq_server-3.6.9 /usr/local/rabbitmq
 8.这种下载的方式解压后直接可以使用，无需再编译安装
 
 ```
-
 进入到rabbit文件内，其命令文件存在于sbin文件夹下，因此需要将sbin文件夹的路径添加到PATH中：修改/etc/profile
 
 export PATH=/usr/local/rabbitmq/sbin:$PATH   
@@ -68,7 +69,7 @@ source /etc/profile
 
 ```
 rabbitmq-plugins enable rabbitmq_management   #启动后台管理
-rabbitmq-server -detached	#后台运行rabbitmq
+rabbitmq-server -detached    #后台运行rabbitmq
 ```
 
 10.设置端口号或者关闭防火墙,以便外部访问
