@@ -1,7 +1,7 @@
 ## **一、Drools简介**
 
 ```
-Drools 是用Java语言编写的开放源码规则引擎，使用Rete算法对所编写的规则求值。Drools允许使用声明方式表达业务逻辑。可以使用非XML的本地语言编写规则，从而便于学习和理解。并且，还可以将Java代码直接嵌入到规则文件中。 
+Drools 是用Java语言编写的开放源码规则引擎，使用Rete算法对所编写的规则求值。Drools允许使用声明方式表达业务逻辑。可以使用非XML的本地语言编写规则，从而便于学习和理解。并且，还可以将Java代码直接嵌入到规则文件中。
 ```
 
 Drools相关概念：
@@ -270,7 +270,9 @@ mvel语法：
 
 表示对象的属性 ：user.name   相当于java代码 user.getName\(\)
 
-                               user.manager.name相当于Java代码user.getManager\(\).getName\(\)
+```
+               user.manager.name相当于Java代码user.getManager\(\).getName\(\)
+```
 
 （2）salience ：设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高,，同时它的值可以是一个负数。默认情况下，规则的 salience 默认值为 0。如果不设置规则的 salience 属性，那么执行顺序是随机的。
 
