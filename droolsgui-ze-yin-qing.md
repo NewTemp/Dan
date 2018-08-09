@@ -254,15 +254,25 @@ then
 end
 ```
 
+（1）绑定参数语法：$\[绑定变量名\] : Object\(\[field 约束\]\) 
+
+例如：$p: Person\(\)  p绑定外面传入的Person对象
+
+（2）条件判断：$绑定变量名 ：绑定类型\(属性1 比较符合 比较值\)
+
+例如：$p: Person\(age &gt; 60 && age &lt; 80\) //必须满足age &gt; 60 和age &lt; 80的Person
+
 3、常用语法属性
 
 （1）dialect：设置规则当中要使用的语言类型，目前支持：mvel和Java，默认是Java。
 
 mvel语法：
 
-表示对象的属性 ：user.name   相当于java代码 user.getName\(\) 
+表示对象的属性 ：user.name   相当于java代码 user.getName\(\)
 
-                                user.manager.name  相当于java代码 user.getManager\(\).getName\(\) 
+user.
+
+
 
 （2）salience ：设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高,，同时它的值可以是一个负数。默认情况下，规则的 salience 默认值为 0。如果不设置规则的 salience 属性，那么执行顺序是随机的。
 
@@ -282,7 +292,7 @@ mvel语法：
 
 （2）update\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
 
-（3）modify\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
+（3）modify\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新，与update语法不同，结果都是更新操作。
 
-（4）retract\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
+（4）retract\(Object o\)：将Working Memory 当中Fact 对象从Working Memory 当中删除。
 
