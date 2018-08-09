@@ -92,5 +92,130 @@ service iptables stop
 
 ### 二.RabbitMQ使用
 
+1.消费与订阅模式
+
+当多个队列与交换机绑定时,消息的生产者生产消息并传递到交换机,交换机根据binding把消息传递给订阅的所有队列.如果队列下面有多个消息的消费者,则会轮询消费消息.队列采用的是匿名队列,匿名队列会随机产生一个队列名,并且消费者如果不存在以后,队列也会自动消失.
+
+```
+/**
+ * rabbitmq 配置类
+ * */
+@Configuration
+public class RabbitMQConfig {
+    //得到一个发布订阅的交换机
+    @Bean
+    public FanoutExchange getFanoutExchange() {
+        return new FanoutExchange("fanoutexchange");
+    }
+
+    //得到三个队列
+    @Bean
+    public Queue createQueue1(){
+        return new AnonymousQueue();
+    }
+
+    @Bean
+    public Queue createQueue2() {
+        return new AnonymousQueue();
+    }
+    @Bean
+    public Queue createQueue3() {
+        return new AnonymousQueue();
+    }
+
+    //绑定队列和交换机
+    @Bean
+    public Binding getBinding1(Queue createQueue1,FanoutExchange fanoutExchange){
+        return BindingBuilder.bind(createQueue1).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding getBinding2(Queue createQueue2, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(createQueue2).to(fanoutExchange);
+    }
+
+    @Bean
+    public Binding getBinding(Queue createQueue3, FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(createQueue3).to(fanoutExchange);
+    }
+
+}
+```
+
+```
+/**
+ * 消息的生产者
+ * */
+@Component
+public class MessageProvider {
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+    @Autowired
+    private FanoutExchange fanoutExchange;
+
+    public void sendMessage(String message){
+        this.amqpTemplate.convertAndSend(fanoutExchange.getName(),null,message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue1.name}")
+public class MessageCustomer {
+
+    @RabbitHandler
+    public void getMessage(String message){
+        System.out.println("第一个信息接收者:"+message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue2.name}")
+public class SecondMessageCustomer {
+    @RabbitHandler
+    public void getMessage(String message) {
+        System.out.println("第二个信息接收者:"+message);
+    }
+}
+```
+
+```
+@Component
+@RabbitListener(queues = "#{createQueue3.name}")
+public class ThirdMessageCustomer {
+    @RabbitHandler
+    public void getMessage(String message) {
+        System.out.println("第三个信息接收者:"+message);
+    }
+}
+```
+
+```
+/**
+ * 测试类
+ * */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class RabbitMQTest {
+    @Autowired
+    private MessageProvider messageProvider;
+    @Test
+    public void messageTest() {
+        messageProvider.sendMessage("hello");
+    }
+}
+```
+
+2.ack机制
+
+为了保证数据不被丢失，RabbitMQ支持消息确认机制，即ack.当消费者正确处理完消息以后,才通知队列删除相应的消息,而不是一收到消息就立即通知队列删除消息.
+
+```
+
+```
+
 
 
