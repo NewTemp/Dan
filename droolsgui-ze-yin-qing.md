@@ -1,6 +1,8 @@
 ## **一、Drools简介**
 
-        Drools 是用Java语言编写的开放源码规则引擎，使用Rete算法对所编写的规则求值。Drools允许使用声明方式表达业务逻辑。可以使用非XML的本地语言编写规则，从而便于学习和理解。并且，还可以将Java代码直接嵌入到规则文件中。
+```
+    Drools 是用Java语言编写的开放源码规则引擎，使用Rete算法对所编写的规则求值。Drools允许使用声明方式表达业务逻辑。可以使用非XML的本地语言编写规则，从而便于学习和理解。并且，还可以将Java代码直接嵌入到规则文件中。
+```
 
 Drools相关概念：
 
@@ -99,7 +101,7 @@ package com.example.person;
 
 import org.drools.examples.test.Person;
 function void printName(String name, String desc) {
-	System.out.println("name:" + name + " desc:" + desc);
+    System.out.println("name:" + name + " desc:" + desc);
 }
 
 rule "boy"
@@ -156,11 +158,11 @@ end
 </kmodule>
 ```
 
-（1）可以包含多个kbase,但是name的值不能重名；
+（1）Kmodule 中可以包含一个到多个 kbase,分别对应 drl 的规则文件，kbase的name可取任意字符串但不能重名；
 
-（2）packages：对应src/main/resources/下存放规则文件的文件夹名称，可定义多个包，用逗号隔开；
+（2）packages：对应src/main/resources/下存放规则文件的文件夹名称，可定义多个包，用逗号隔开。默认情况下会扫描 resources目录下所有\(包含子目录\)规则文件；
 
-（3）每个kbase里的ksession都有一个name，任意字符串但不能重名，可以有多个；
+（3）kbase里可有一个或多个ksession，每个ksession的name必须设置并且唯一；
 
 5、创建测试类PersonTest，内容如下：
 
@@ -215,6 +217,8 @@ public class PersonTest {
 }
 ```
 
+代码解释：首先通过请求获取 KieServices，通过KieServices获取KieContainer，KieContainer加载规则文件并获取KieSession，KieSession来执行规则引擎，KieSession是一个轻量级组建，每次执行完销毁。
+
 6、运行结果如下：
 
 ![](/assets/1533797017%281%29.png)
@@ -225,27 +229,60 @@ public class PersonTest {
 
 一个标准的规则文件的结构代码包含如下部分：
 
-（1）package package-name\(包名，必须的，不必和物理路径一致\)
+（1）package package-name\(包名，必须的，不必和物理路径一致\)，package在规则文件放在第一行，其他的可以无序
 
 （2）import 需要导入Java Bean的完整路径
 
-（3）globals \(全局变量\)
+（3）globals 变量类型 变量名称\(全局变量\)
 
+（4）functions \(函数\)
 
+（5）queries \(查询\)
 
+（6）rules 规则名称，不可重名
 
+2、规则语言
 
+```
+package 包名
 
+rule "规则名"
+when
+    (条件) - 也叫作规则的 LHS(Left Hand Side)
+then
+    (动作/结果) - 也叫作规则的 RHS(Right Hand Side)
+end
+```
 
+3、常用语法属性
 
+（1）dialect：设置规则当中要使用的语言类型，目前支持：mvel和Java，默认是Java。
 
+mvel语法：
 
+表示对象的属性 ：user.name   相当于java代码 user.getName\(\) 
 
+                                user.manager.name  相当于java代码 user.getManager\(\).getName\(\) 
 
+（2）salience ：设置规则执行的优先级，salience 属性的值是一个数字，数字越大执行优先级越高,，同时它的值可以是一个负数。默认情况下，规则的 salience 默认值为 0。如果不设置规则的 salience 属性，那么执行顺序是随机的。
 
+（3）no-loop ：定义当前的规则是否不允许多次循环执行，,默认是 false，也就是当前的规则只要满足条件，可以无限次执行。
 
+（4）lock-on-active ：将lock-on-active属性的值设置为true，可避免因某些Fact对象被修改而使已经执行过的规则再次被激活执行。
 
+（5）date-effective：设置规则的生效时间，只有date-effective设置的时间值&lt;=当系统时间时，规则才会触发执行，否则执行将不执行。date-effective 可接受的日期格式为“dd-MMM-yyyy”。
 
+（6）date-expires：设置规则的过期时间，只有date-expires设置的时间值&gt;=当系统时间时，规则才会触发执行，否则执行将不执行。
 
+（7）enabled：设置规则是否可用。
 
+4、常用函数
+
+（1）insert\(Object o\)：实现对当前Working Memory中的Fact 对象进行新增。
+
+（2）update\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
+
+（3）modify\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
+
+（4）retract\(Object o\)：实现对当前Working Memory中的Fact 对象进行更新。
 
