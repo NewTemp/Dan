@@ -208,7 +208,7 @@ turbine:
 
 踩坑：http://localhost:8080/turbine.stream 一直处于 ```data:{"type":"ping"}``` 的状态，但当消费者请求提供者之后，数据就出来了。
 
-注：以上使用的是本地Rabbitmq，需指定其他地址使用下面配置
+注：以上使用的是本地Rabbitmq，指定其他地址使用下面配置
 
 ```
 spring:
