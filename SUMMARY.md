@@ -11,11 +11,8 @@
 
 * [Agg\(Flight\)](api/aggflight.md)
   * [API V1](api/aggflight/api.md)
-    * [header](api/aggflight/api/header.md)
     * [flightSerach](api/aggflight/api/flightserach.md)
     * [flightRoll](api/aggflight/api/flightroll.md)
-    * [flightVerify](api/aggflight/api/flightverify.md)
-    * [flightCreateOrder](api/aggflight/api/flightcreateorder.md)
 * [Travelport](api/travelport.md)
   * [wiki](api/travelport/wiki.md)
     * [LowFareSearch](api/travelport/wiki/lowfaresearch.md)
@@ -46,7 +43,7 @@
 ## Spring Cloud
 
 * [Spring Cloud](Spring-Cloud/README.md)
-  * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
   * [Spring Cloud 网关Zuul](Spring-Cloud/spring-cloud-wang-guan-zuul.md)
-  * [Spring Cloud 服务实时监控Hystrix Dashboar、Turbine](Spring-Cloud/Turbine.md)
-
+  * [Spring Cloud 负载均衡Ribbon、服务熔断Hystrix](Spring-Cloud/Feign.md)
+  * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
+  * [Spring Cloud 服务实时监控Hystrix Dashboard、Turbine](Spring-Cloud/Turbine.md)
