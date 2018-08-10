@@ -290,9 +290,10 @@ public class AckMessageCustomer {
     public void processMessage2(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
         System.out.println(message);
         try {
-            channel.basicAck(tag, false);
+            channel.basicAck(tag, false);//确认收到信息.第二个参数如果为true时,表示tag小于当前tag的信息都会被一次性确认
         } catch (IOException e) {
-            channel.basicNack(tag,false,true);
+            channel.basicNack(tag,false,true);//未收到信息.第三个参数如果为true时,表示要重复发送这条消息
+            channel.basicReject(tag,true);//丢弃信息
         }
     }
 }
