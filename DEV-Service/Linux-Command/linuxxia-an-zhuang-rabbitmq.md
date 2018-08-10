@@ -209,12 +209,93 @@ public class RabbitMQTest {
 }
 ```
 
-2.ack机制
+2.点对点模式
 
-为了保证数据不被丢失，RabbitMQ支持消息确认机制，即ack.当消费者正确处理完消息以后,才通知队列删除相应的消息,而不是一收到消息就立即通知队列删除消息.
+队列和交换机绑定产生一个binding.当routing key与binding key完全匹配的时候,消息才会被投递
 
 ```
+//点对点模式
+@Bean("directexchange")
+public DirectExchange getDirectExchange() {
+    return new DirectExchange("directexchange");
+}
+@Bean("directqueue")
+public Queue getDirectQueue() {
+    return new Queue("directqueue");
+}
+@Bean
+public Binding getDirectBindingKey(@Qualifier(value = "directqueue") Queue queue,@Qualifier(value = "directexchange") Exchange exchange) {
+    return BindingBuilder.bind(queue).to(exchange).with("direct_key").noargs();
+}
+```
 
+```
+//点对点模式
+public void sendMessageFaceToFace(String message) {
+    this.amqpTemplate.convertAndSend(directExchange.getName(),"direct_key",message);
+}
+```
+
+3.rabbitmq消息的确认机制
+
+\(1\)消息生产者到交换机之间的消息确认:
+
+通过实现ConfirmCallback 接口，消息发送到 Broker 后触发回调，确认消息是否到达 Broker 服务器
+
+\(2\)交换机到队列之间的消息确认:
+
+通过实现ReturnCallbac接口,启动消息失败返回,比如路由不到队列时触发回调
+
+```
+@Component
+public class RabbitTemplateConfig implements RabbitTemplate.ReturnCallback,RabbitTemplate.ConfirmCallback {
+    @Autowired
+    private RabbitTemplate rabbitTemplate;
+
+    @PostConstruct
+    public void init(){
+        rabbitTemplate.setConfirmCallback(this);
+    }
+
+    @Override
+    public void confirm(CorrelationData correlationData, boolean ack, String cause) {
+        System.out.println("交换机确认信息:唯一标识"+correlationData+",确认结果:"+ack+",失败原因:"+cause);
+    }
+
+    @Override
+    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
+        System.out.println("队列收到信息:"+message+",回复消息码:"+replyCode+",回复内容:"+replyText+",交换机:"+exchange+",路由键:"+routingKey);
+    }
+}
+```
+
+\(3\)队列和消费者之间的消息确认:
+
+默认情况是,消费者收到消息,队列就删除这条消息,无论消费者是否正确处理这条消息.为了保证数据不被丢失，RabbitMQ支持消息确认机制，即ack.当消费者正确处理完消息以后,才通知队列删除相应的消息,而不是一收到消息就立即通知队列删除消息.
+
+ack的模式有三种:
+
+```
+AcknowledgeMode.NONE：自动确认
+AcknowledgeMode.AUTO：根据情况确认
+AcknowledgeMode.MANUAL：手动确认
+```
+
+```
+@Component
+@RabbitListener(queues = "directqueue")
+public class AckMessageCustomer {
+
+    @RabbitHandler
+    public void processMessage2(String message, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
+        System.out.println(message);
+        try {
+            channel.basicAck(tag, false);
+        } catch (IOException e) {
+            channel.basicNack(tag,false,true);
+        }
+    }
+}
 ```
 
 
