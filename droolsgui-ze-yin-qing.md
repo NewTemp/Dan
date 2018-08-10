@@ -314,14 +314,13 @@ public class PersonTest {
         run();
     }
 }
-
 ```
 
 代码解释：首先通过请求获取 KieServices，通过KieServices获取KieContainer，KieContainer加载规则文件并获取KieSession，KieSession来执行规则引擎，KieSession是一个轻量级组建，每次执行完销毁。
 
 6、运行结果如下：
 
-![](/assets/1533797017%281%29.png)
+![](/assets/1533900757%281%29.png)
 
 ## **三、Drools规则语法**
 
@@ -416,7 +415,7 @@ mvel语法：
 
 （5）retract\(Object o\)：将Working Memory 当中Fact 对象从Working Memory 当中删除。
 
-5、常用方法 
+5、常用方法
 
 （1）求和：Long\(...\) from accumulate\(..., sum\($p\)\)
 
