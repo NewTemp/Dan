@@ -486,8 +486,8 @@ management:
 
 # 三、参考
 
-https://windmt.com/2018/04/24/spring-cloud-12-sleuth-zipkin/
+[Spring Cloud（十二）：分布式链路跟踪 Sleuth 与 Zipkin【Finchley 版】](https://windmt.com/2018/04/24/spring-cloud-12-sleuth-zipkin/)
 
-http://cloud.spring.io/spring-cloud-static/Finchley.RELEASE/multi/multi__introduction.html#_sleuth_with_zipkin_over_rabbitmq_or_kafka
+[Sleuth with Zipkin over RabbitMQ or Kafka](http://cloud.spring.io/spring-cloud-static/Finchley.RELEASE/multi/multi__introduction.html#_sleuth_with_zipkin_over_rabbitmq_or_kafka)
 
-https://gitee.com/minull/ace-security
+[Cloud-Admin](https://gitee.com/minull/ace-security)

@@ -116,8 +116,6 @@ spring:
     name: turbine
 server:
   port: 8080
-management:
-  port: 8081
 eureka:
   client:
     service-url:
@@ -138,7 +136,88 @@ turbine:
 
 ## 消息代理收集监控信息
 
-TODO
+使用消息代理还需要修改服务实例的POM文件
+
+引入依赖
+
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
+```
+
+Turbine服务，修改POM
+
+```
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-turbine-stream</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+</dependency>
+```
+
+启动类，使用```@EnableTurbineStream```注解
+
+```
+@EnableTurbineStream
+@SpringBootApplication
+public class TurbineStreamApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(TurbineStreamApplication.class, args);
+    }
+}
+```
+
+配置文件把以下段去掉
+
+```
+turbine:
+  app-config: consumer,consumer1
+  cluster-name-expression: new String("default")
+  combine-host-port: true
+```
+
+踩坑：http://localhost:8080/turbine.stream 一直处于 ```data:{"type":"ping"}``` 的状态，但当消费者请求提供者之后，数据就出来了。
+
+注：以上使用的是本地Rabbitmq，指定其他地址使用下面配置
+
+```
+spring:
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST:localhost}
+      port:  ${RABBIT_MQ_PORT:5672}
+      username: ${RABBIT_MQ_USER:guest}
+      password: ${RABBIT_MQ_PASS:guest}
+```
 
 
 示例：http://gitlab.utech.com/Vick.Zeng/spring-cloud-demo.git
