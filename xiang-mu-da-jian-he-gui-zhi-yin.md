@@ -6,7 +6,7 @@
 
 * [集成Eureka](/xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-eureka.md)
 * 集成Redis
-* 集成Log
+* [集成Log](/xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-log.md)
 * 集成Config
 * 多环境配置
 * 提供Actuactor集成
