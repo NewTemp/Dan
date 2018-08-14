@@ -52,3 +52,6 @@
   * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
   * [Spring Cloud 服务实时监控Hystrix Dashboard、Turbine](Spring-Cloud/Turbine.md)
 
+## Insurance
+
+* [Insurance Api](insurance.md)
