@@ -2,6 +2,15 @@
 
 Author: Huston
 
+* 简介
+* Usage
+ - maven配置
+ - logback-spring
+ - debug,error,info
+ - xml
+ - permance
+ - query 
+
 ## 1. 简介
 
 utech的日志运行设施是基于ELK架构的。
@@ -133,3 +142,9 @@ public LowFareSearchResponse lowFareSearch(LowFareSearchRequest lowFareSearchReq
 ### 2.5 性能日志如何打？
 
 目前还没有集成，等待Email。。。
+
+### 2.6 怎么查询日志
+
+DEV环境：http://172.18.21.222:5601/app/kibana
+
+![](/assets/Log_sample.png)
