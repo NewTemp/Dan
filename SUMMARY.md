@@ -63,6 +63,7 @@
   * [Linux Command](DEV-Service/Linux-Command/Linux-Command.md)
   * [Service Building](DEV-Service/Service-Building/README.md)
   * [Redis](DEV-Service/Linux-Command/redis.md)
+    * [Redis Web界面](DEV-Service/Linux-Command/redis/redis-webjie-mian.md)
   * [Rabbit](DEV-Service/Linux-Command/rabbit.md)
   * [Mongo](DEV-Service/Linux-Command/mongo.md)
   * [ELK](DEV-Service/Linux-Command/elk.md)
