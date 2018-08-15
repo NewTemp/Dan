@@ -7,6 +7,10 @@
   * [集成Eureka](xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-eureka.md)
   * [GIT提交规范](xiang-mu-da-jian-he-gui-zhi-yin/gitti-jiao-gui-fan.md)
   * [集成Log](xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-log.md)
+  * [集成Config](xiang-mu-da-jian-he-gui-zhi-yin/ji-chengconfig.md)
+  * [多环境配置](xiang-mu-da-jian-he-gui-zhi-yin/duo-huan-jing-pei-zhi.md)
+  * [提供Actuactor集成](xiang-mu-da-jian-he-gui-zhi-yin/ti-gong-actuactor-ji-cheng.md)
+  * [集成Redis](xiang-mu-da-jian-he-gui-zhi-yin/ji-cheng-redis.md)
 * [Drools规则引擎](droolsgui-ze-yin-qing.md)
 
 ## API
@@ -51,13 +55,20 @@
 * [DEV Service](DEV-Service/README.md)
   * [Linux Command](DEV-Service/Linux-Command/Linux-Command.md)
   * [Service Building](DEV-Service/Service-Building/README.md)
+  * [Redis](DEV-Service/Linux-Command/redis.md)
+  * [Rabbit](DEV-Service/Linux-Command/rabbit.md)
+  * [Mongo](DEV-Service/Linux-Command/mongo.md)
+  * [ELK](DEV-Service/Linux-Command/elk.md)
+  * [Zookeeper](DEV-Service/Linux-Command/zookeeper.md)
+  * [Jenkins](DEV-Service/Linux-Command/jenkins.md)
+  * [Mysql](DEV-Service/Linux-Command/mysql.md)
+  * [docker](DEV-Service/Linux-Command/docker.md)
 
 ## Spring Boot
 
 * [Spring Boot](Spring-Boot/README.md)
   * [Spring boot 注解](Spring-Boot/Spring-boot注解.md)
   * [Spring Security使用](Spring-Boot/spring-security.md)
-* [RabbitMQ的安装及使用](DEV-Service/Linux-Command/linuxxia-an-zhuang-rabbitmq.md)
 
 ## Spring Cloud
 
@@ -70,4 +81,11 @@
 ## Insurance
 
 * [Insurance Api](insurance.md)
+
+## RabbitMq
+
+* [原理篇](rabbitmq/yuan-li.md)
+* [操作篇](rabbitmq/cao-zuo-pian.md)
+  * [Start](rabbitmq/cao-zuo-pian/start.md)
+  * [RabbitMQ的安装及使用](DEV-Service/Linux-Command/linuxxia-an-zhuang-rabbitmq.md)
 
