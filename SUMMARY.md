@@ -55,6 +55,7 @@
     * [TSA接口逻辑](api/voucher/v1/tsajie-kou-luo-ji.md)
     * [加密解密服务](api/voucher/v1/jia-mi-jie-mi-fu-wu.md)
     * [架构设计](api/voucher/v1/jia-gou-she-ji.md)
+* [Insurance Api](insurance.md)
 
 ## DEV Service
 
@@ -83,10 +84,6 @@
   * [Spring Cloud 负载均衡Ribbon、服务熔断Hystrix](Spring-Cloud/Feign.md)
   * [Spring Cloud 链路跟踪Zipkin](Spring-Cloud/Zipkin.md)
   * [Spring Cloud 服务实时监控Hystrix Dashboard、Turbine](Spring-Cloud/Turbine.md)
-
-## Insurance
-
-* [Insurance Api](insurance.md)
 
 ## RabbitMq
 
