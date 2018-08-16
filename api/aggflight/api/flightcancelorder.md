@@ -1,13 +1,13 @@
-# flightTicketing
+# flightCancelOrder
 
-出票
+预订
 
 ## 1.1 入参
 
 | 名称 | 类型 | 是否必填 | 描述 |
 | ---: | :--- | :---: | :--- |
+| orderId | String | Y | 订单号 |
 | PNR | String | Y | PNR |
-|  | orderId | String | 订单号 |
 
 ## 1.2 出参
 
