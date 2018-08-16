@@ -13,15 +13,26 @@
 | cabinType | Enum | Y | 仓等类型 |
 | permittedCarriers | List&lt;String&gt; | N | 指定搜索的航司 |
 | prohibitedCarriers | List&lt;String&gt; | N | 指定排除的航司 |
-| solutionResult | Boolean | Y | 搜索结构的显示，针对TRP. |
+| directOnly | Boolean | N | 是否直飞 |
 | passengers | List&lt;Passenger&gt; | Y | 乘客列表 |
+|  |  |  |  |
+| Passenger对象 |  |  |  |
+| passengerType | String | Y | 乘客类型 |
+| age | Int | Y | 年龄 |
 
 ### 1.2 出参
 
 | 名称 | 类型 | 是否必填 | 描述 |
 | ---: | :--- | :---: | :--- |
 | requestKey | String | Y | 如果轮询时，可以这么使用。 |
-| searchTraceId | String | Y | 搜索的跟踪号 |
+| airPricePoints | List&lt;AirPricePoint&gt; | N | 价格响应 |
+|  |  |  |  |
+| AirPricePoint对象 |  |  |  |
+| outBoundOptions | List&lt;Option&gt; |  |  |
+| inBoundOptions | List&lt;Option&gt; |  |  |
+|  |  |  |  |
+| Option对象 |  |  |  |
+|  |  |  |  |
 
 ### 1.3 API逻辑
 

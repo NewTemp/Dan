@@ -11,7 +11,7 @@
 | 名称 | 类型 | 是否必填 | 描述 |
 | ---: | :--- | :---: | :--- |
 | requestKey | String | Y | 轮询Redis的Key。 |
-| searchTraceId | String | Y | 搜索结果跟踪号。 |
+| airPricePoints | List&lt;AirPricePoint&gt; |  |  |
 
 ## 1.3 API逻辑
 

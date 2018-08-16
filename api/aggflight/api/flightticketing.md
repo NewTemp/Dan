@@ -6,8 +6,8 @@
 
 | 名称 | 类型 | 是否必填 | 描述 |
 | ---: | :--- | :---: | :--- |
-| PNR | String | Y | PNR |
-|  | orderId | String | 订单号 |
+| orderId | String | Y | 订单号 |
+| PNR | String |  |  |
 
 ## 1.2 出参
 
