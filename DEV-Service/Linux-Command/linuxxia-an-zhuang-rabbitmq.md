@@ -236,6 +236,30 @@ public void sendMessageFaceToFace(String message) {
 }
 ```
 
+点对点拉取模式:
+
+消费者不是和队列保持长连接状态,而是主动拉取消息
+
+```
+@Component
+public class AckMessageCustomer {
+    public void processMessage2() throws IOException, TimeoutException {
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("192.168.245.128");
+        factory.setPort(5672);
+        factory.setUsername("admin");
+        factory.setPassword("admin");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
+        //pull方式获取信息
+        GetResponse response = channel.basicGet("directqueue", false);
+        channel.basicAck(response.getEnvelope().getDeliveryTag(),false);
+        //channel.basicAck(tag, false);//确认收到信息.第二个参数如果为true时,表示tag小于当前tag的信息都会被一次性确认
+        connection.close();
+    }
+}
+```
+
 3.rabbitmq消息的确认机制
 
 \(1\)消息生产者到交换机之间的消息确认:
